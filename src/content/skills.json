@@ -1,0 +1,37 @@
+[
+    {
+      "Domain": "Web Development",
+      "Type": "Languages",
+      "Skill": "React",
+      "Expertise": "Expert",
+      "Importance": "High"
+    },
+    {
+      "Domain": "Web Development",
+      "Type": "Languages",
+      "Skill": "NodeJS",
+      "Expertise": "Advanced",
+      "Importance": "High"
+    },
+    {
+      "Domain": "Web Development",
+      "Type": "Tools and Technology",
+      "Skill": "Web delivery",
+      "Expertise": "Expert",
+      "Importance": "High"
+    },
+    {
+      "Domain": "Cloud Infrastructure",
+      "Type": "Languages",
+      "Skill": "Python",
+      "Expertise": "Intermediate",
+      "Importance": "High"
+    },
+    {
+      "Domain": "Cloud Infrastructure",
+      "Type": "Tools and Technology",
+      "Skill": "AWS",
+      "Expertise": "Expert",
+      "Importance": "High"
+    }
+  ]

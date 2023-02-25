@@ -1,11 +1,116 @@
 ---
+import json from '../content/skills.json';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
+import Grid from '../components/Grid.astro';
+
+interface SkillObject {
+  Domain: string;
+  Type: string;
+  Skill: string;
+  Expertise: string;
+  Importance: string;
+}
+
+type ExistingArray = SkillObject[];
+
+const existingArray: ExistingArray = json;
+
+type Skill = {
+  Skill: string;
+  Expertise: string;
+  Importance: string;
+};
+
+type Type = {
+  [key: string]: Skill[];
+};
+
+type Domain = {
+  [key: string]: Type;
+};
+
+const newStructure: Domain = {};
+
+
+existingArray.forEach((skill) => {
+  if (!newStructure[skill.Domain]) {
+    newStructure[skill.Domain] = {};
+  }
+
+  if (!newStructure[skill.Domain][skill.Type]) {
+    newStructure[skill.Domain][skill.Type] = [];
+  }
+
+  newStructure[skill.Domain][skill.Type].push({
+    Skill: skill.Skill,
+    Expertise: skill.Expertise,
+    Importance: skill.Importance,
+  });
+});
+
+
+interface DomainType {
+    [key: string]: TypeArray;
+}
+
+interface TypeArray {
+    [key: string]: SkillArray;
+}
+
+interface SkillArray {
+    Skill: string;
+    Expertise: Expertise;
+    Importance: Importance;
+}
+
+type Expertise = "Expert" | "Advanced" | "Intermediate" | "Beginner";
+type Importance = "High" | "Medium" | "Low";
+
+type SortedMatrix = {
+  [key in Domain]?: {
+    [key in Type]?: SkillArray[]
+  }
+}
+type sortKey = "Skill" | "Expertise" | "Importance";
+
+
+/**
+ * This function takes in the newStructure and the sortKey as inputs, and returns a new sorted sortedMatrix object. It sorts the domains and types by their keys, and sorts the skills based on the sortKey provided. The comparison is done using the localeCompare method, which compares two strings based on the locale and returns a value indicating their sort order. The default case returns 0, meaning the order of the skills remains unchanged.
+ */
+const sortSkillsMatrix = (newStructure: Domain, sortKey: sortKey) => {
+  const sortedMatrix: DomainType = {};
+  Object.keys(newStructure).sort().forEach(domain => {
+    sortedMatrix[domain] = {};
+    Object.keys(newStructure[domain]).sort().forEach(type => {
+      sortedMatrix[domain][type] = newStructure[domain][type].sort((a, b) => {
+        switch (sortKey) {
+          case 'Skill':
+            return a.Skill.localeCompare(b.Skill);
+          case 'Expertise':
+            return a.Expertise.localeCompare(b.Expertise);
+          case 'Importance':
+            return a.Importance.localeCompare(b.Importance);
+          default:
+            return 0;
+        }
+      });
+    });
+  });
+  return sortedMatrix;
+}
+
+/** 
+ * In this example, the skills matrix will be sorted by importance. You can replace 'Importance' with any of the other keys to sort by a different key.
+ *
+ */
+const sortedSkillsMatrix = sortSkillsMatrix(newStructure, 'Importance');
+
 ---
 
-<BaseLayout title="About | Ryan Barnett" description="About Ryan Barnett Lorem Ipsum">
+<BaseLayout title="About | Ryan Barnett" description="About Ryan Barnett">
 	<div class="stack gap-20">
 		<main class="wrapper about">
 			<Hero
@@ -24,35 +129,58 @@ import Hero from '../components/Hero.astro';
 				<h2 class="section-title">Background</h2>
 				<div class="content">
 					<p>
-						Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy.
-						Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla
-						pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+						I am an experienced Engineering Manager with eight years of technical leadership and four years of direct people management. At The Washington Post's Arc XP, I have honed skills in building developer experiences, delivering customer experience projects, and designing systems that meet the needs of various user groups. My background in web delivery practices, API and backend development, and frontend development has been demonstrated on digital experience platforms serving over 1.5 billion unique requests a month. 
 					</p>
 					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis
-						natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel
-						quam elementum pulvinar etiam non.
+						As a leader, I focus on execution, alignment with business objectives, and setting key results to help my team succeed. 
 					</p>
 					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet
-						eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
-						Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl
-						pretium fusce.
+						With my skills and experience in software engineering, I bring value to organizations looking to advance their digital initiatives.
 					</p>
 				</div>
 			</section>
 			<section>
 				<h2 class="section-title">Education</h2>
 				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
+					<p>B.A., Temple University 2012</p>
 				</div>
 			</section>
 			<section>
 				<h2 class="section-title">Skills</h2>
 				<div class="content">
-					<p>officia unde omnis</p>
+					<!-- <p>officia unde omnis</p> -->
+					<div class="gallery">
+						<Grid>
+							{Object.entries(newStructure).map(([domainKey, domainValue]) => (
+								<li class="mention-card">
+								  <div><h5>{domainKey}</h5></div>
+								  {Object.entries(domainValue).map(([typeKey, typeValue]) => (
+									<div>
+									  <strong>{typeKey}</strong>
+									  <ul>
+										{typeValue.map((skill) => (
+											<li>
+												{skill.Skill}
+										  </li>
+										//   <li>
+										// 	<div>
+										// 	  <strong>Skill:</strong> {skill.Skill}
+										// 	</div>
+										// 	<div>
+										// 	  <strong>Expertise:</strong> {skill.Expertise}
+										// 	</div>
+										// 	<div>
+										// 	  <strong>Importance:</strong> {skill.Importance}
+										// 	</div>
+										//   </li>
+										))}
+									  </ul>
+									</div>
+								  ))}
+								</li>
+							  ))}
+						</Grid>
+					</div>
 				</div>
 			</section>
 		</main>
@@ -101,7 +229,25 @@ import Hero from '../components/Hero.astro';
 	.content :global(a:focus) {
 		text-decoration-color: currentColor;
 	}
+	.gallery {
+			grid-area: gallery;
+		}
+	.mention-card {
+		display: flex;
+		height: 7rem;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		color: var(--gray-300);
+		background: var(--gradient-subtle);
+		box-shadow: var(--shadow-sm);
+	}
 
+	@media (min-width: 50em) {
+
+	}
 	@media (min-width: 50em) {
 		.about {
 			display: grid;
@@ -115,6 +261,10 @@ import Hero from '../components/Hero.astro';
 		section {
 			display: contents;
 			font-size: var(--text-lg);
+		}
+		.mention-card {
+			border-radius: 1.5rem;
+			height: 9.5rem;
 		}
 	}
 </style>
