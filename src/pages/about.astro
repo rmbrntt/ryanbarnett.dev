@@ -127,7 +127,7 @@ const sortedSkillsMatrix = sortSkillsMatrix(newStructure, 'Importance');
 
 			<section>
 				<h2 class="section-title">Background</h2>
-				<div class="content">
+				<div class="grid grid-flow-row gap-4 auto-rows-max">
 					<p>
 						I am an experienced Engineering Manager with eight years of technical leadership and four years of direct people management. At The Washington Post's Arc XP, I have honed skills in building developer experiences, delivering customer experience projects, and designing systems that meet the needs of various user groups. My background in web delivery practices, API and backend development, and frontend development has been demonstrated on digital experience platforms serving over 1.5 billion unique requests a month. 
 					</p>
@@ -147,39 +147,29 @@ const sortedSkillsMatrix = sortSkillsMatrix(newStructure, 'Importance');
 			</section>
 			<section>
 				<h2 class="section-title">Skills</h2>
-				<div class="content">
+				<div class="">
 					<!-- <p>officia unde omnis</p> -->
-					<div class="gallery">
-						<Grid>
+					<div class="grid grid-flow-row gap-4 auto-rows-fr">
+					<!-- <div class="flex flex-row justify-between"> -->
 							{Object.entries(newStructure).map(([domainKey, domainValue]) => (
-								<li class="mention-card">
-								  <div><h5>{domainKey}</h5></div>
-								  {Object.entries(domainValue).map(([typeKey, typeValue]) => (
-									<div>
-									  <strong>{typeKey}</strong>
-									  <ul>
-										{typeValue.map((skill) => (
-											<li>
-												{skill.Skill}
-										  </li>
-										//   <li>
-										// 	<div>
-										// 	  <strong>Skill:</strong> {skill.Skill}
-										// 	</div>
-										// 	<div>
-										// 	  <strong>Expertise:</strong> {skill.Expertise}
-										// 	</div>
-										// 	<div>
-										// 	  <strong>Importance:</strong> {skill.Importance}
-										// 	</div>
-										//   </li>
-										))}
-									  </ul>
-									</div>
+								<div class="skill-card p-5 gap-2 flex flex-col">
+									<div><h5>{domainKey}</h5></div>
+									<div class="flex flex-row gap-8">
+										{Object.entries(domainValue).map(([typeKey, typeValue]) => (
+										<div class="">
+											<strong>{typeKey}</strong>
+											<ul>
+												{typeValue.map((skill) => (
+													<li>
+														{skill.Skill}
+												</li>
+												))}
+											</ul>
+										</div>
 								  ))}
-								</li>
+									</div>
+								</div>
 							  ))}
-						</Grid>
 					</div>
 				</div>
 			</section>
@@ -232,17 +222,28 @@ const sortedSkillsMatrix = sortSkillsMatrix(newStructure, 'Importance');
 	.gallery {
 			grid-area: gallery;
 		}
-	.mention-card {
-		display: flex;
-		height: 7rem;
-		justify-content: center;
-		align-items: center;
+	.skill-card {
+		/* display: flex; */
+		/* justify-content: space-around;
+		align-items: flex-start;
 		text-align: center;
+		flex-wrap: wrap; */
+		/* justify-content: center;
+		align-items: center;
+		text-align: center; */
+		/* justify-content: flex-start;
+		align-items: flex-start;
+		text-align: start;
+		flex-wrap: wrap; */
 		border: 1px solid var(--gray-800);
 		border-radius: 1.5rem;
 		color: var(--gray-300);
 		background: var(--gradient-subtle);
 		box-shadow: var(--shadow-sm);
+	}
+
+	.skill-card .domain {
+		width: 100%;
 	}
 
 	@media (min-width: 50em) {
@@ -262,9 +263,9 @@ const sortedSkillsMatrix = sortSkillsMatrix(newStructure, 'Importance');
 			display: contents;
 			font-size: var(--text-lg);
 		}
-		.mention-card {
+		.skill-card {
 			border-radius: 1.5rem;
-			height: 9.5rem;
+			height: 100%;
 		}
 	}
 </style>

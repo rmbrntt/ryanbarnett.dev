@@ -14,6 +14,13 @@
       "Importance": "High"
     },
     {
+        "Domain": "Web Development",
+        "Type": "Languages",
+        "Skill": "Python",
+        "Expertise": "Advanced",
+        "Importance": "High"
+    },
+    {
       "Domain": "Web Development",
       "Type": "Tools and Technology",
       "Skill": "Web delivery",
@@ -26,6 +33,13 @@
       "Skill": "Python",
       "Expertise": "Intermediate",
       "Importance": "High"
+    },
+    {
+        "Domain": "Cloud Infrastructure",
+        "Type": "Languages",
+        "Skill": "NodeJS",
+        "Expertise": "Intermediate",
+        "Importance": "High"
     },
     {
       "Domain": "Cloud Infrastructure",
