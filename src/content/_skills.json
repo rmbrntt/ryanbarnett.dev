@@ -1,0 +1,100 @@
+[
+    {
+      "Domain": "Web Development",
+      "Type": "Languages",
+      "Skill": "React",
+      "Expertise": "Expert",
+      "Importance": "High"
+    },
+    {
+      "Domain": "Web Development",
+      "Type": "Languages",
+      "Skill": "NodeJS",
+      "Expertise": "Advanced",
+      "Importance": "High"
+    },
+    {
+        "Domain": "Web Development",
+        "Type": "Languages",
+        "Skill": "Python",
+        "Expertise": "Advanced",
+        "Importance": "High"
+    },
+    {
+      "Domain": "Web Development",
+      "Type": "Tools and Technology",
+      "Skill": "Web delivery",
+      "Expertise": "Expert",
+      "Importance": "High"
+    },
+    {
+      "Domain": "Cloud Infrastructure",
+      "Type": "Languages",
+      "Skill": "Python",
+      "Expertise": "Intermediate",
+      "Importance": "High"
+    },
+    {
+        "Domain": "Cloud Infrastructure",
+        "Type": "Languages",
+        "Skill": "NodeJS",
+        "Expertise": "Intermediate",
+        "Importance": "High"
+    },
+    {
+      "Domain": "Cloud Infrastructure",
+      "Type": "Tools and Technology",
+      "Skill": "AWS",
+      "Expertise": "Expert",
+      "Importance": "High"
+    },
+    {
+        "Domain": "Leadership",
+        "Type": "Focus Areas",
+        "Skill": "Mentoring and coaching",
+        "Expertise": "Expert",
+        "Importance": "High"
+      },
+      {
+        "Domain": "Leadership",
+        "Type": "Focus Areas",
+        "Skill": "Cross-team initiatives",
+        "Expertise": "Expert",
+        "Importance": "High"
+      },
+      {
+        "Domain": "Leadership",
+        "Type": "Focus Areas",
+        "Skill": "Recruiting and interviewing",
+        "Expertise": "Expert",
+        "Importance": "High"
+      },
+      {
+        "Domain": "Leadership",
+        "Type": "Focus Areas",
+        "Skill": "Stakeholder management",
+        "Expertise": "Expert",
+        "Importance": "High"
+      },
+      {
+        "Domain": "Leadership",
+        "Type": "Focus Areas",
+        "Skill": "Executive communication",
+        "Expertise": "Expert",
+        "Importance": "High"
+      },
+      {
+        "Domain": "Leadership",
+        "Type": "Focus Areas",
+        "Skill": "Business strategy",
+        "Expertise": "Expert",
+        "Importance": "High"
+      },
+      {
+        "Domain": "Leadership",
+        "Type": "Focus Areas",
+        "Skill": "Change management",
+        "Expertise": "Expert",
+        "Importance": "High"
+      }
+  ]
