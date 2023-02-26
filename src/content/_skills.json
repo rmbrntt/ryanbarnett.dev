@@ -1,15 +1,22 @@
 [
   {
     "Domain": "Web Development",
-    "Type": "Languages",
+    "Type": "Technologies",
     "Skill": "React",
     "Expertise": "Expert",
     "Importance": "High"
   },
   {
     "Domain": "Web Development",
+    "Type": "Technologies",
+    "Skill": "NextJS",
+    "Expertise": "Advanced",
+    "Importance": "High"
+  },
+  {
+    "Domain": "Web Development",
     "Type": "Languages",
-    "Skill": "NodeJS",
+    "Skill": "JavaScript",
     "Expertise": "Advanced",
     "Importance": "High"
   },
@@ -22,77 +29,133 @@
   },
   {
     "Domain": "Web Development",
-    "Type": "Tools and Technology",
-    "Skill": "Web delivery",
+    "Type": "Expertise",
+    "Skill": "Accessibility (a11y)",
     "Expertise": "Expert",
     "Importance": "High"
   },
   {
-    "Domain": "Cloud Infrastructure",
-    "Type": "Languages",
-    "Skill": "Python",
-    "Expertise": "Intermediate",
+    "Domain": "Web Development",
+    "Type": "Expertise",
+    "Skill": "SEO optimization",
+    "Expertise": "Expert",
     "Importance": "High"
   },
   {
-    "Domain": "Cloud Infrastructure",
-    "Type": "Languages",
+    "Domain": "Web Development",
+    "Type": "Expertise",
+    "Skill": "Internationalization (i18n)",
+    "Expertise": "Expert",
+    "Importance": "High"
+  },
+  {
+    "Domain": "Cloud Orchestration",
+    "Type": "Technologies",
     "Skill": "NodeJS",
     "Expertise": "Intermediate",
     "Importance": "High"
   },
   {
-    "Domain": "Cloud Infrastructure",
-    "Type": "Tools and Technology",
-    "Skill": "AWS",
+    "Domain": "Cloud Orchestration",
+    "Type": "AWS",
+    "Skill": "Lambda",
+    "Expertise": "Intermediate",
+    "Importance": "High"
+  },
+  {
+    "Domain": "Cloud Orchestration",
+    "Type": "AWS",
+    "Skill": "EC2",
+    "Expertise": "Intermediate",
+    "Importance": "High"
+  },
+  {
+    "Domain": "Cloud Orchestration",
+    "Type": "AWS",
+    "Skill": "CloudFormation",
+    "Expertise": "Intermediate",
+    "Importance": "High"
+  },
+  {
+    "Domain": "Cloud Orchestration",
+    "Type": "AWS",
+    "Skill": "DynamoDB",
+    "Expertise": "Intermediate",
+    "Importance": "High"
+  },
+  {
+    "Domain": "Cloud Orchestration",
+    "Type": "Technologies",
+    "Skill": "MongoDB",
+    "Expertise": "Intermediate",
+    "Importance": "High"
+  },
+  {
+    "Domain": "Cloud Orchestration",
+    "Type": "Technologies",
+    "Skill": "Kubernetes",
+    "Expertise": "Expert",
+    "Importance": "High"
+  },
+  {
+    "Domain": "Cloud Orchestration",
+    "Type": "Expertise",
+    "Skill": "Serverless",
+    "Expertise": "Expert",
+    "Importance": "High"
+  },
+  {
+    "Domain": "Cloud Orchestration",
+    "Type": "Expertise",
+    "Skill": "Infrastructure as Code (IaC)",
+    "Expertise": "Expert",
+    "Importance": "High"
+  },
+  {
+    "Domain": "Cloud Orchestration",
+    "Type": "Expertise",
+    "Skill": "System design",
     "Expertise": "Expert",
     "Importance": "High"
   },
   {
     "Domain": "Leadership",
-    "Type": "Focus Areas",
-    "Skill": "Mentoring and coaching",
-    "Expertise": "Expert",
-    "Importance": "High"
-  },
-  {
-    "Domain": "Leadership",
-    "Type": "Focus Areas",
+    "Type": "Technical Execution",
     "Skill": "Cross-team initiatives",
     "Expertise": "Expert",
     "Importance": "High"
   },
   {
     "Domain": "Leadership",
-    "Type": "Focus Areas",
+    "Type": "Team Management",
+    "Skill": "Mentoring and coaching",
+    "Expertise": "Expert",
+    "Importance": "High"
+  },
+  {
+    "Domain": "Leadership",
+    "Type": "Team Management",
     "Skill": "Recruiting and interviewing",
     "Expertise": "Expert",
     "Importance": "High"
   },
   {
     "Domain": "Leadership",
-    "Type": "Focus Areas",
+    "Type": "Technical Execution",
     "Skill": "Stakeholder management",
     "Expertise": "Expert",
     "Importance": "High"
   },
   {
     "Domain": "Leadership",
-    "Type": "Focus Areas",
-    "Skill": "Executive communication",
-    "Expertise": "Expert",
-    "Importance": "High"
-  },
-  {
-    "Domain": "Leadership",
-    "Type": "Focus Areas",
+    "Type": "Technical Execution",
     "Skill": "Business strategy",
     "Expertise": "Expert",
     "Importance": "High"
   },
   {
     "Domain": "Leadership",
-    "Type": "Focus Areas",
+    "Type": "Technical Execution",
     "Skill": "Change management",
     "Expertise": "Expert",
     "Importance": "High"
