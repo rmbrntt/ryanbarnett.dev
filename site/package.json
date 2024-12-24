@@ -15,6 +15,7 @@
     "@astrojs/react": "^3.0.9",
     "@astrojs/tailwind": "^5.0.0",
     "@nanostores/persistent": "^0.10.2",
+    "@nanostores/react": "^0.8.4",
     "@react-three/drei": "^9.120.4",
     "@react-three/fiber": "^8.17.10",
     "@types/react": "^18.2.48",
