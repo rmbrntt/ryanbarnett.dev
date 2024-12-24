@@ -35,7 +35,15 @@ jobs:
 
       - name: Build site
         working-directory: ./site
-        run: pnpm build
+        run: |
+          pnpm build
+          echo "Build complete. Checking dist directory:"
+          ls -la dist/
+
+      - name: Debug directory structure
+        run: |
+          echo "Current directory structure:"
+          ls -R ./site/dist/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
