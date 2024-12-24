@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import QuantumHero from '../components/QuantumHero';
+---
+
+<BaseLayout title="Ryan Barnett">
+  <main class="min-h-screen">
+    <QuantumHero client:load />
+    
+    <section class="container mx-auto px-4 py-16">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* Recent Content - Implemented with proper quantum design system aesthetics */}
+        <div class="card bg-base-900/50 backdrop-blur-sm border-quantum-primary/10">
+          <h3 class="text-xl font-medium text-quantum-primary mb-4">Latest Writing</h3>
+          <div class="space-y-6">
+            <a href="/thoughts/building-a-digital-garden" class="block group">
+              <h4 class="text-lg text-base-50 group-hover:text-quantum-primary transition-colors">Building a Digital Garden</h4>
+              <p class="text-base-300 mt-2">Exploring the intersection of knowledge management and digital spaces.</p>
+              <time class="text-sm text-base-400 mt-2 block">December 24, 2024</time>
+            </a>
+          </div>
+        </div>
+
+        <div class="card bg-base-900/50 backdrop-blur-sm border-quantum-secondary/10">
+          <h3 class="text-xl font-medium text-quantum-secondary mb-4">System Thinking</h3>
+          <div class="space-y-6">
+            <a href="/thoughts/system-thinking" class="block group">
+              <h4 class="text-lg text-base-50 group-hover:text-quantum-secondary transition-colors">System Thinking and Software</h4>
+              <p class="text-base-300 mt-2">How systems thinking can improve software architecture.</p>
+              <time class="text-sm text-base-400 mt-2 block">December 14, 2024</time>
+            </a>
+          </div>
+        </div>
+
+        <div class="card bg-base-900/50 backdrop-blur-sm border-quantum-deep/10">
+          <h3 class="text-xl font-medium text-quantum-deep mb-4">Laboratory</h3>
+          <div class="space-y-6">
+            <a href="/lab" class="block group">
+              <h4 class="text-lg text-base-50 group-hover:text-quantum-deep transition-colors">Quantum Experiments</h4>
+              <p class="text-base-300 mt-2">Interactive explorations of quantum design principles.</p>
+              <div class="text-sm text-quantum-deep/60 mt-2">Active Research</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Quantum card styles */
+  .card {
+    @apply p-6 rounded-lg transition-all duration-300;
+    @apply hover:shadow-lg hover:shadow-quantum-primary/5;
+    @apply hover:translate-y-[-2px];
+    @apply border border-border/40;
+  }
+
+  /* Quantum text effects */
+  .text-quantum-primary {
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  }
+  .text-quantum-secondary {
+    text-shadow: 0 0 20px rgba(139, 31, 255, 0.2);
+  }
+  .text-quantum-deep {
+    text-shadow: 0 0 20px rgba(136, 64, 154, 0.2);
+  }
+</style>

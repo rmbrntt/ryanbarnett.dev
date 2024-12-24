@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { QuantumContainer } from '../../components/markdoc/QuantumContainer.tsx';
+import { QuantumColorBlock } from '../../components/lab/QuantumColorBlock';
+import { colors } from '../../lib/theme/colors';
+import CIELABFlexokiExplorer from '../../components/lab/CIELABFlexokiExplorer';
+
+const sections = [
+  {
+    id: 'principles',
+    title: 'Core Principles',
+    icon: '⚡',
+    theme: 'cyan',
+    items: [
+      {
+        title: 'Quantum Design Principles',
+        description: 'Design in the quantum space emerges from the superposition of form and function—each component exists in multiple states of purpose while maintaining coherent visual harmony.'
+      },
+      {
+        title: 'Perceptual Hierarchy',
+        description: 'Like the CIELAB color space, information should be organized in perceptually uniform layers, guiding attention through carefully calibrated contrasts and rhythms.'
+      },
+      {
+        title: 'System Coherence',
+        description: 'Our design system creates a unified field where each element resonates at its own frequency while maintaining quantum entanglement with the whole.'
+      }
+    ]
+  },
+  {
+    id: 'colors',
+    title: 'Color System',
+    icon: '◐',
+    theme: 'purple',
+    description: 'Our color system is built on the CIELAB color space, ensuring perceptual uniformity and accessibility across all quantum states.'
+  },
+  {
+    id: 'typography',
+    title: 'Typography',
+    icon: '∿',
+    theme: 'green',
+    description: 'A dynamic type system that adapts to different quantum states while maintaining readability and hierarchy.'
+  },
+  {
+    id: 'components',
+    title: 'Quantum Components',
+    icon: '◈',
+    theme: 'red',
+    description: 'Interactive elements that exist in multiple states, providing rich feedback and clear affordances.'
+  }
+];
+
+const principles = sections[0].items || [];
+
+const quantumColors = Object.entries(colors.quantum).map(([name, color]) => ({
+  name,
+  hex: color.primary,
+  lab: color.lab,
+  usage: color.usage
+}));
+
+const themes = {
+  cyan: {
+    colors: {
+      primary: colors.quantum.cyan.primary,
+      secondary: colors.quantum.cyan.secondary,
+      bg: colors.quantum.cyan.primary,
+      border: colors.quantum.cyan.secondary,
+      glow: colors.quantum.cyan.variants.light.glow,
+      text: colors.quantum.cyan.primary,
+      accent: colors.quantum.cyan.secondary,
+      muted: `${colors.quantum.cyan.primary}80`,
+      background: `${colors.quantum.cyan.primary}10`,
+      foreground: colors.quantum.cyan.primary
+    }
+  },
+  purple: {
+    colors: {
+      primary: colors.quantum.purple.primary,
+      secondary: colors.quantum.purple.secondary,
+      bg: colors.quantum.purple.primary,
+      border: colors.quantum.purple.secondary,
+      glow: colors.quantum.purple.variants.light.glow,
+      text: colors.quantum.purple.primary,
+      accent: colors.quantum.purple.secondary,
+      muted: `${colors.quantum.purple.primary}80`,
+      background: `${colors.quantum.purple.primary}10`,
+      foreground: colors.quantum.purple.primary
+    }
+  },
+  green: {
+    colors: {
+      primary: colors.quantum.green.primary,
+      secondary: colors.quantum.green.secondary,
+      bg: colors.quantum.green.primary,
+      border: colors.quantum.green.secondary,
+      glow: colors.quantum.green.variants.light.glow,
+      text: colors.quantum.green.primary,
+      accent: colors.quantum.green.secondary,
+      muted: `${colors.quantum.green.primary}80`,
+      background: `${colors.quantum.green.primary}10`,
+      foreground: colors.quantum.green.primary
+    }
+  },
+  red: {
+    colors: {
+      primary: colors.quantum.red.primary,
+      secondary: colors.quantum.red.secondary,
+      bg: colors.quantum.red.primary,
+      border: colors.quantum.red.secondary,
+      glow: colors.quantum.red.variants.light.glow,
+      text: colors.quantum.red.primary,
+      accent: colors.quantum.red.secondary,
+      muted: `${colors.quantum.red.primary}80`,
+      background: `${colors.quantum.red.primary}10`,
+      foreground: colors.quantum.red.primary
+    }
+  }
+};
+---
+
+<BaseLayout title="Quantum Design System">
+  <main class="container mx-auto px-4 py-8">
+    {/* Header */}
+    <div class="relative mb-16">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#00FFFF]/10 to-[#8B1FFF]/10 blur-3xl -z-10" />
+      <h1 class="text-4xl font-bold mb-4">Quantum Design System</h1>
+      <p class="text-xl text-muted-foreground max-w-2xl">
+        A unified design language that combines quantum mechanics principles with human-centered design, creating interfaces that exist in multiple states of purpose and beauty.
+      </p>
+    </div>
+
+    <div class="grid gap-16">
+      {/* Core Principles */}
+      <section id="principles" class="grid gap-8">
+        <h2 class="text-2xl font-bold flex items-center gap-2">
+          <span class="text-[#00FFFF]">⚡</span> Core Principles
+        </h2>
+        <div class="grid gap-6">
+          {principles.map(item => (
+            <QuantumContainer theme={themes.cyan} withGradient>
+              <div class="p-6">
+                <h3 class="text-lg font-medium mb-2">{item.title}</h3>
+                <p class="text-muted-foreground">{item.description}</p>
+              </div>
+            </QuantumContainer>
+          ))}
+        </div>
+      </section>
+
+      {/* Color System */}
+      <section id="colors" class="grid gap-8">
+        <h2 class="text-2xl font-bold flex items-center gap-2">
+          <span class="text-[#c596fc]">◐</span> Color System
+        </h2>
+        <div class="grid gap-8">
+          <QuantumContainer theme={themes.purple} withGradient>
+            <div class="p-6">
+              <h3 class="text-lg font-medium mb-4">CIELAB Color Space</h3>
+              <CIELABFlexokiExplorer client:load />
+            </div>
+          </QuantumContainer>
+
+          <div class="grid gap-4">
+            <h3 class="text-lg font-medium">Quantum Colors</h3>
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {quantumColors.map(color => (
+                <QuantumColorBlock 
+                  name={color.name}
+                  hex={color.hex}
+                  lab={color.lab}
+                  usage={color.usage}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Typography */}
+      <section id="typography" class="grid gap-8">
+        <h2 class="text-2xl font-bold flex items-center gap-2">
+          <span class="text-[#59a066]">∿</span> Typography
+        </h2>
+        <QuantumContainer theme={themes.green} withGradient>
+          <div class="p-6 grid gap-8">
+            <div>
+              <h3 class="text-lg font-medium mb-4">Type Scale</h3>
+              <div class="space-y-4">
+                <div class="space-y-1">
+                  <div class="text-4xl font-bold">Display Large</div>
+                  <div class="text-sm text-muted-foreground">4xl / bold / 2.5rem</div>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-3xl font-bold">Display Medium</div>
+                  <div class="text-sm text-muted-foreground">3xl / bold / 2rem</div>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-2xl font-bold">Display Small</div>
+                  <div class="text-sm text-muted-foreground">2xl / bold / 1.5rem</div>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-xl font-medium">Title</div>
+                  <div class="text-sm text-muted-foreground">xl / medium / 1.25rem</div>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-base">Body</div>
+                  <div class="text-sm text-muted-foreground">base / regular / 1rem</div>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-sm">Small</div>
+                  <div class="text-sm text-muted-foreground">sm / regular / 0.875rem</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-medium mb-4">Font Families</h3>
+              <div class="grid gap-4">
+                <div class="space-y-2">
+                  <div class="font-sans text-xl">Standard</div>
+                  <p class="text-muted-foreground">Primary interface font, optimized for readability</p>
+                </div>
+                <div class="space-y-2">
+                  <div class="font-mono text-xl">JetBrains Mono</div>
+                  <p class="text-muted-foreground">Monospace font for code and technical content</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </QuantumContainer>
+      </section>
+
+      {/* Components */}
+      <section id="components" class="grid gap-8">
+        <h2 class="text-2xl font-bold flex items-center gap-2">
+          <span class="text-[#d14554]">◈</span> Quantum Components
+        </h2>
+        <QuantumContainer theme={themes.red} withGradient>
+          <div class="p-6">
+            <div class="grid gap-8">
+              <div>
+                <h3 class="text-lg font-medium mb-4">Core Components</h3>
+                <div class="grid gap-4 md:grid-cols-2">
+                  <a href="/lab/quantum-components" class="block">
+                    <div class="p-4 rounded-lg border border-border hover:border-[#d14554]/40 transition-colors">
+                      <h4 class="font-medium mb-2">Quantum Container</h4>
+                      <p class="text-sm text-muted-foreground">Multi-state container with quantum effects</p>
+                    </div>
+                  </a>
+                  <a href="/lab/quantum-substrate" class="block">
+                    <div class="p-4 rounded-lg border border-border hover:border-[#d14554]/40 transition-colors">
+                      <h4 class="font-medium mb-2">Quantum Substrate</h4>
+                      <p class="text-sm text-muted-foreground">Dynamic background field visualization</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-medium mb-4">Component States</h3>
+                <div class="grid gap-4">
+                  <div class="p-4 rounded-lg bg-muted/50">
+                    <h4 class="font-medium mb-2">Quantum State Management</h4>
+                    <p class="text-sm text-muted-foreground">Components maintain coherent states across interactions</p>
+                  </div>
+                  <div class="p-4 rounded-lg bg-muted/50">
+                    <h4 class="font-medium mb-2">Interaction Patterns</h4>
+                    <p class="text-sm text-muted-foreground">Clear affordances with rich hover and focus states</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </QuantumContainer>
+      </section>
+    </div>
+  </main>
+</BaseLayout> 

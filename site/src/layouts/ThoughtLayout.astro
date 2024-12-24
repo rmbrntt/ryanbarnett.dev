@@ -1,0 +1,58 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  thought: CollectionEntry<'thoughts'>;
+}
+
+const { thought } = Astro.props;
+---
+
+<BaseLayout 
+  title={`${thought.data.title} - Ryan Barnett`}
+  description={thought.data.description}
+  systemReveal={thought.data.systemReveal}
+>
+  <article class="prose prose-lg mx-auto">
+    <header class="mb-8">
+      <h1 class="mb-4 text-4xl font-bold tracking-tight">{thought.data.title}</h1>
+      {thought.data.description && (
+        <p class="text-xl text-base-600 mb-4">{thought.data.description}</p>
+      )}
+      <div class="flex gap-4 items-center text-sm text-base-500">
+        <time datetime={thought.data.publishDate.toISOString()}>
+          {thought.data.publishDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
+        </time>
+        {thought.data.tags && (
+          <div class="flex gap-2">
+            {thought.data.tags.map(tag => (
+              <a href={`/tags/${tag}`} class="hover:text-blue transition-colors">
+                #{tag}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </header>
+
+    <slot />
+
+    {thought.data.systemReveal && (
+      <div 
+        id="knowledge-context"
+        class="fixed top-24 right-8 w-64 bg-base-paper/80 backdrop-blur-sm rounded-lg shadow-lg border border-base-200 p-4 hidden lg:block"
+      >
+        <h2 class="text-sm font-medium text-base-600 mb-2">Knowledge Context</h2>
+        <!-- This will be populated by the system -->
+        <div class="text-sm text-base-500">
+          Loading context...
+        </div>
+      </div>
+    )}
+  </article>
+</BaseLayout>

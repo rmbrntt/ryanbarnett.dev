@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CIELABFlexokiExplorer from '../../components/lab/CIELABFlexokiExplorer';
+---
+
+<BaseLayout title="Color Space Exploration">
+  <main class="container mx-auto px-4 py-8">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold mb-2">Color Space Exploration</h1>
+      <p class="text-xl text-muted-foreground">
+        A perceptual journey through CIELAB × Flexoki fusion
+      </p>
+    </header>
+
+    <CIELABFlexokiExplorer client:load />
+  </main>
+</BaseLayout>

@@ -1,0 +1,11 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<blockquote class={`my-8 pl-6 border-l-4 border-quantum-primary/40 italic text-quantum-primary/80 ${className}`}>
+  <slot />
+</blockquote> 

@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import QuantumSubstrate3D from '../components/system/QuantumSubstrate';
+---
+
+<BaseLayout 
+  title="System Layer Test - Ryan Barnett" 
+  description="Testing the quantum substrate visualization"
+>
+  <!-- Quantum substrate as full bleed background -->
+  <div class="fixed inset-0 w-screen h-screen z-0">
+    <QuantumSubstrate3D 
+      client:load 
+      mode="reveal" 
+      interactive={true} 
+      coherence={0.5}
+    />
+  </div>
+
+  <!-- Content overlay -->
+  <div class="relative z-40">
+    <div class="prose dark:prose-invert max-w-4xl mx-auto">
+      <h1>System Layer Test</h1>
+      <p class="text-xl">Testing the quantum substrate visualization.</p>
+      <p>The substrate is interactive - try clicking and dragging to rotate it. The navigation menu remains clickable above it.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Force dark background and full bleed */
+  :global(body) {
+    background-color: #100F0F !important;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  :global(main) {
+    padding: 0;
+    max-width: none !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  .prose {
+    padding: 2rem;
+  }
+</style>

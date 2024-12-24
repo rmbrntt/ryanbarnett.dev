@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  QuantumColorBlock,
+  QuantumStateFlow,
+  QuantumMathBlock,
+  QuantumHierarchy,
+  QuantumCallout,
+  QuantumSequence
+} from "../../components/quantum";
+import { quantumThemes } from "../../components/markdoc/QuantumContainer";
+
+const colorThemeMap = {
+  'Quantum Cyan': 'cyan',
+  'Astral Purple': 'purple',
+  'Matrix Green': 'green',
+  'Neural Red': 'red',
+  'Void Yellow': 'yellow',
+  'Deep Mind': 'deep'
+} as const;
+
+const testColors = [
+  { l: 80, a: -20, b: -30, hex: '#88d0f3', name: 'Quantum Cyan' as const },
+  { l: 70, a: 30, b: -50, hex: '#c596fc', name: 'Astral Purple' as const },
+  { l: 60, a: -40, b: 20, hex: '#59a066', name: 'Matrix Green' as const },
+  { l: 50, a: 50, b: 20, hex: '#d14554', name: 'Neural Red' as const },
+  { l: 90, a: 0, b: 40, hex: '#10cdb8e', name: 'Void Yellow' as const },
+  { l: 40, a: 40, b: -40, hex: '#88409a', name: 'Deep Mind' as const }
+] as const;
+---
+
+<BaseLayout title="Quantum Components">
+  <main class="container mx-auto px-4 py-8">
+    {/* Header with Quantum Effect */}
+    <header class="relative mb-16">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#00FFFF]/10 to-[#8B1FFF]/10 blur-3xl -z-10" />
+      <h1 class="text-4xl font-bold mb-2">Quantum Components</h1>
+      <p class="text-xl text-muted-foreground">
+        A comprehensive demonstration of our quantum design system components
+      </p>
+    </header>
+
+    <div class="grid gap-16">
+      {/* Core Principles */}
+      <section>
+        <h2 class="text-2xl font-medium mb-8 flex items-center gap-2">
+          <span class="text-[#00FFFF]">⚡</span>
+          Core Principles
+        </h2>
+        
+        <div class="space-y-4">
+          <QuantumCallout
+            variant="quantum"
+            title="Quantum Design Principles"
+          >
+            Design in the quantum space emerges from the superposition of form and function—each component 
+            exists in multiple states of purpose while maintaining coherent visual harmony.
+          </QuantumCallout>
+
+          <QuantumCallout
+            variant="field"
+            title="Perceptual Hierarchy"
+          >
+            Like the CIELAB color space, information should be organized in perceptually uniform layers, 
+            guiding attention through carefully calibrated contrasts and rhythms.
+          </QuantumCallout>
+
+          <QuantumCallout
+            variant="system"
+            title="System Coherence"
+          >
+            Our design system creates a unified field where each element resonates at its own frequency 
+            while maintaining quantum entanglement with the whole.
+          </QuantumCallout>
+        </div>
+      </section>
+
+      {/* Color System */}
+      <section>
+        <h2 class="text-2xl font-medium mb-8 flex items-center gap-2">
+          <span class="text-[#00FFFF]">◐</span>
+          Color System
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {testColors.map(color => (
+            <QuantumColorBlock
+              name={color.name}
+              lab={{ l: color.l, a: color.a, b: color.b }}
+              hex={color.hex}
+              theme={quantumThemes[colorThemeMap[color.name]]}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* State Flows */}
+      <section>
+        <h2 class="text-2xl font-medium mb-8 flex items-center gap-2">
+          <span class="text-[#00FFFF]">∿</span>
+          State Flows
+        </h2>
+        
+        <QuantumStateFlow
+          states={[
+            { name: "Idle", theme: quantumThemes.cyan, description: "Initial state" },
+            { name: "Hover", theme: quantumThemes.purple, description: "User interaction" },
+            { name: "Active", theme: quantumThemes.green, description: "Processing" },
+            { name: "Return", theme: quantumThemes.cyan, description: "Complete" }
+          ]}
+          columns={4}
+          withGradient
+        />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          <QuantumStateFlow
+            states={[
+              { name: "Normal", theme: quantumThemes.cyan },
+              { name: "Warning", theme: quantumThemes.red },
+              { name: "Critical", theme: quantumThemes.deep }
+            ]}
+            columns={3}
+            withGradient
+          />
+
+          <QuantumStateFlow
+            states={[
+              { name: "Input", theme: quantumThemes.cyan },
+              { name: "Processing", theme: quantumThemes.purple },
+              { name: "Output", theme: quantumThemes.green }
+            ]}
+            columns={3}
+            withGradient
+          />
+        </div>
+      </section>
+
+      {/* Mathematical Framework */}
+      <section>
+        <h2 class="text-2xl font-medium mb-8 flex items-center gap-2">
+          <span class="text-[#00FFFF]">∆</span>
+          Mathematical Framework
+        </h2>
+        
+        <div class="space-y-6">
+          <QuantumMathBlock
+            title="Schrödinger's Equation"
+            math="-\\frac{\\hbar^2}{2m} \\nabla^2\\psi + V\\psi = E\\psi"
+            theme={quantumThemes.cyan}
+            description="The fundamental equation describing quantum state evolution."
+          />
+
+          <QuantumMathBlock
+            title="Quantum Harmonic Oscillator"
+            math="E_n = \\hbar\\omega\\left(n + \\frac{1}{2}\\right), \\quad n = 0,1,2,..."
+            theme={quantumThemes.purple}
+            description="Energy levels of a quantum harmonic oscillator."
+          />
+        </div>
+      </section>
+
+      {/* Information Hierarchy */}
+      <section>
+        <h2 class="text-2xl font-medium mb-8 flex items-center gap-2">
+          <span class="text-[#00FFFF]">◇</span>
+          Information Hierarchy
+        </h2>
+        
+        <QuantumHierarchy
+          levels={[
+            {
+              title: "Primary Content",
+              theme: quantumThemes.cyan,
+              content: "High-priority information with L* value of 80",
+              size: "xl"
+            },
+            {
+              title: "Secondary Details",
+              theme: quantumThemes.purple,
+              content: "Supporting information with L* value of 70",
+              size: "lg"
+            },
+            {
+              title: "Tertiary Content",
+              theme: quantumThemes.green,
+              content: "Additional context with L* value of 60",
+              size: "base"
+            }
+          ]}
+          spacing="normal"
+        />
+      </section>
+
+      {/* Information Flow */}
+      <section>
+        <h2 class="text-2xl font-medium mb-8 flex items-center gap-2">
+          <span class="text-[#00FFFF]">◆</span>
+          Information Flow
+        </h2>
+        
+        <QuantumSequence
+          title="Quantum Information Flow"
+          participants={[
+            { id: 'Q', name: 'Quantum State', theme: quantumThemes.cyan },
+            { id: 'O', name: 'Observer', theme: quantumThemes.purple },
+            { id: 'E', name: 'Environment', theme: quantumThemes.green },
+            { id: 'I', name: 'Information', theme: quantumThemes.deep }
+          ]}
+          steps={[
+            { from: 'Q', to: 'O', action: 'Superposition' },
+            { from: 'O', to: 'E', action: 'Measurement' },
+            { from: 'E', to: 'O', action: 'Decoherence' },
+            { from: 'O', to: 'I', action: 'State Collapse' },
+            { from: 'I', to: 'Q', action: 'Feedback Loop' }
+          ]}
+          note="Quantum Information Cycle"
+        />
+      </section>
+    </div>
+  </main>
+</BaseLayout>

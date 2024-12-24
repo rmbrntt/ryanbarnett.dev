@@ -1,0 +1,84 @@
+/* Quantum Colors in CIELAB and HSL */
+:root {
+  /* Base Colors */
+  --quantum-cyan: #88d0f3;      /* L:80 a:-20 b:-30 */
+  --quantum-purple: #c596fc;    /* L:70 a:30 b:-50 */
+  --quantum-green: #59a066;     /* L:60 a:-40 b:20 */
+  --quantum-red: #d14554;       /* L:50 a:50 b:20 */
+  --quantum-yellow: #10cdb8e;   /* L:90 a:0 b:40 */
+  --quantum-deep: #88409a;      /* L:40 a:40 b:-40 */
+
+  /* Functional Colors */
+  --color-primary: var(--quantum-cyan);
+  --color-secondary: var(--quantum-purple);
+  --color-success: var(--quantum-green);
+  --color-warning: var(--quantum-yellow);
+  --color-error: var(--quantum-red);
+  --color-deep: var(--quantum-deep);
+
+  /* Gradients */
+  --gradient-quantum: linear-gradient(
+    135deg,
+    var(--quantum-cyan) 0%,
+    var(--quantum-purple) 100%
+  );
+  --gradient-field: linear-gradient(
+    135deg,
+    var(--quantum-purple) 0%,
+    var(--quantum-green) 100%
+  );
+  --gradient-system: linear-gradient(
+    135deg,
+    var(--quantum-green) 0%,
+    var(--quantum-deep) 100%
+  );
+
+  /* Effects */
+  --glow-primary: 0 0 20px rgb(136 208 243 / 0.3);    /* Cyan glow */
+  --glow-secondary: 0 0 20px rgb(197 150 252 / 0.3);  /* Purple glow */
+  --glow-success: 0 0 20px rgb(89 160 102 / 0.3);     /* Green glow */
+  --glow-warning: 0 0 20px rgb(16 205 184 / 0.3);     /* Yellow glow */
+  --glow-error: 0 0 20px rgb(209 69 84 / 0.3);        /* Red glow */
+  --glow-deep: 0 0 20px rgb(136 64 154 / 0.3);        /* Deep glow */
+}
+
+/* Dark theme adjustments */
+.dark {
+  --color-primary: var(--quantum-cyan);
+  --color-secondary: var(--quantum-purple);
+  --color-success: var(--quantum-green);
+  --color-warning: var(--quantum-yellow);
+  --color-error: var(--quantum-red);
+  --color-deep: var(--quantum-deep);
+
+  /* Increase glow intensity in dark mode */
+  --glow-primary: 0 0 30px rgb(136 208 243 / 0.4);
+  --glow-secondary: 0 0 30px rgb(197 150 252 / 0.4);
+  --glow-success: 0 0 30px rgb(89 160 102 / 0.4);
+  --glow-warning: 0 0 30px rgb(16 205 184 / 0.4);
+  --glow-error: 0 0 30px rgb(209 69 84 / 0.4);  
+  --glow-deep: 0 0 30px rgb(136 64 154 / 0.4);
+}
+
+/* Utility classes */
+.quantum-glow {
+  text-shadow: var(--glow-primary);
+}
+
+.quantum-glow-secondary {
+  text-shadow: var(--glow-secondary);
+}
+
+.quantum-border {
+  border-color: rgb(136 208 243 / 0.2);
+}
+
+.quantum-bg {
+  background: var(--gradient-quantum);
+}
+
+.quantum-text {
+  background: var(--gradient-quantum);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

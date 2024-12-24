@@ -1,0 +1,400 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import QuantumSubstrate from '../../components/lab/QuantumSubstrate';
+import { Callout } from '../../components/markdoc/Callout';
+import { CodeBlock } from '../../components/markdoc/CodeBlock';
+import { MathComponent } from '../../components/markdoc/Math';
+import { Mermaid } from '../../components/markdoc/Mermaid';
+import { Gallery } from '../../components/markdoc/Gallery';
+import { Chart } from '../../components/markdoc/Chart';
+
+// Example code snippets
+const calloutExample = `{% callout type="info" title="Using Callouts" %}
+Callouts help highlight important information in your content.
+Available types: note, warning, info, success, error
+{% /callout %}`;
+
+const mathExample = `{% math block=true %}
+\\frac{1}{\\Bigl(\\sqrt{\\phi \\sqrt{5}}-\\phi\\Bigr) e^{\\frac{2}{5} \\pi}}
+{% /math %}`;
+
+const mermaidExample = `{% mermaid title="Component Hierarchy" %}
+graph TD
+    A[Content] --> B{Type}
+    B --> C[Static]
+    B --> D[Interactive]
+    C --> E[Markdown]
+    C --> F[MDX]
+    D --> G[React]
+    D --> H[Three.js]
+{% /mermaid %}`;
+
+const galleryExample = `{% gallery 
+  images=[
+    { src: "/images/example1.jpg", alt: "Example 1", caption: "First image" },
+    { src: "/images/example2.jpg", alt: "Example 2", caption: "Second image" },
+    { src: "/images/example3.jpg", alt: "Example 3", caption: "Third image" }
+  ]
+  columns=3
+  aspectRatio="16/9"
+%}`;
+
+const chartExample = `{% chart
+  type="line"
+  title="Knowledge Growth Over Time"
+  labels=["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+  datasets=[
+    {
+      label: "Articles",
+      data: [4, 8, 15, 23, 35, 42]
+    },
+    {
+      label: "Connections",
+      data: [2, 6, 18, 35, 58, 89]
+    }
+  ]
+%}`;
+
+// Example images for the gallery
+const exampleImages = [
+  {
+    src: 'https://images.unsplash.com/photo-1682687220742-aba13b6e50ba',
+    alt: 'Example image 1',
+    caption: 'Dynamic content presentation',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1682687220063-4742bd7c98d7',
+    alt: 'Example image 2',
+    caption: 'Interactive visualizations',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1682687220198-88e9bdea9931',
+    alt: 'Example image 3',
+    caption: 'Knowledge mapping',
+  },
+];
+
+// Example chart data
+const chartData = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+  datasets: [
+    {
+      label: 'Articles',
+      data: [4, 8, 15, 23, 35, 42],
+    },
+    {
+      label: 'Connections',
+      data: [2, 6, 18, 35, 58, 89],
+    },
+  ],
+};
+---
+
+<BaseLayout title="Content System - Features & Documentation">
+  <div class="fixed inset-0 w-screen h-screen -z-10">
+    <QuantumSubstrate 
+      client:only="react"
+      mode="reveal" 
+      interactive={true} 
+      coherence={0.3} 
+    />
+  </div>
+
+  <main class="container mx-auto px-4 py-8 relative z-10">
+    <div class="prose prose-lg dark:prose-invert mx-auto">
+      <h1 class="text-4xl font-bold mb-4">Content System</h1>
+      <p class="text-xl text-muted-foreground mb-8">
+        A comprehensive guide to the rich content features available in our knowledge space.
+      </p>
+
+      <nav class="my-8 p-4 rounded-lg bg-background/80 backdrop-blur border">
+        <h2 class="text-lg font-semibold mb-4">Quick Navigation</h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <li>
+            <a href="#core-components" class="block p-3 rounded-md hover:bg-accent transition-colors">
+              Core Components
+            </a>
+          </li>
+          <li>
+            <a href="#markdown-features" class="block p-3 rounded-md hover:bg-accent transition-colors">
+              Markdown Features
+            </a>
+          </li>
+          <li>
+            <a href="#interactive-elements" class="block p-3 rounded-md hover:bg-accent transition-colors">
+              Interactive Elements
+            </a>
+          </li>
+          <li>
+            <a href="#content-patterns" class="block p-3 rounded-md hover:bg-accent transition-colors">
+              Content Patterns
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <section id="core-components" class="mt-16">
+        <h2 class="text-3xl font-bold mb-6">Core Components</h2>
+        
+        <div class="space-y-12">
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Callouts</h3>
+            <p class="mb-4">Highlight important information with styled callouts.</p>
+            
+            <div class="space-y-4">
+              <Callout type="note" title="Note Example">
+                Standard notes for general information.
+              </Callout>
+
+              <Callout type="warning" title="Warning Example">
+                Important warnings that need attention.
+              </Callout>
+
+              <Callout type="info" title="Usage">
+                Use callouts to highlight key information in your content.
+              </Callout>
+
+              <CodeBlock language="markdown" filename="example.mdx">
+                {calloutExample}
+              </CodeBlock>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Mathematical Expressions</h3>
+            <p class="mb-4">Write complex mathematical equations with KaTeX support.</p>
+
+            <div class="space-y-4">
+              <div class="p-4 bg-background rounded-lg">
+                <MathComponent math="\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}" block={true} />
+              </div>
+
+              <CodeBlock language="markdown" filename="example.mdx">
+                {mathExample}
+              </CodeBlock>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Diagrams</h3>
+            <p class="mb-4">Create dynamic diagrams with Mermaid.</p>
+
+            <div class="space-y-4">
+              <Mermaid chart={`
+                graph TD
+                  A[Content] --> B{Type}
+                  B --> C[Static]
+                  B --> D[Interactive]
+                  C --> E[Markdown]
+                  C --> F[MDX]
+                  D --> G[React]
+                  D --> H[Three.js]
+              `} title="Component Hierarchy" />
+
+              <CodeBlock language="markdown" filename="example.mdx">
+                {mermaidExample}
+              </CodeBlock>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="markdown-features" class="mt-16">
+        <h2 class="text-3xl font-bold mb-6">Enhanced Markdown Features</h2>
+        
+        <div class="grid gap-8">
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">GitHub-Flavored Markdown</h3>
+            <div class="space-y-4">
+              <h4 class="text-xl font-medium">Task Lists</h4>
+              - [x] Basic Markdown
+              - [x] Extended syntax
+              - [ ] Custom extensions
+
+              <h4 class="text-xl font-medium">Tables</h4>
+              | Feature | Status | Notes |
+              |---------|--------|-------|
+              | GFM | ✅ | Full support |
+              | Tables | ✅ | With alignment |
+              | Lists | ✅ | Nested support |
+
+              <h4 class="text-xl font-medium">Footnotes</h4>
+              Here's a sentence with a footnote[^1].
+
+              [^1]: This is the footnote content.
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Code Highlighting</h3>
+            <CodeBlock 
+              language="typescript" 
+              filename="example.ts"
+              highlightLines={[2, 3]}
+            >
+              {`function example() {
+  // This line is highlighted
+  const value = "Hello, World!";
+  return value;
+}`}
+            </CodeBlock>
+          </div>
+        </div>
+      </section>
+
+      <section id="interactive-elements" class="mt-16">
+        <h2 class="text-3xl font-bold mb-6">Interactive Elements</h2>
+        
+        <div class="space-y-12">
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Image Gallery</h3>
+            <p class="mb-4">Create responsive image galleries with lightbox support and keyboard navigation.</p>
+            
+            <div class="space-y-4">
+              <Gallery 
+                client:load
+                images={exampleImages}
+                columns={3}
+                aspectRatio="16/9"
+              />
+
+              <CodeBlock language="markdown" filename="example.mdx">
+                {galleryExample}
+              </CodeBlock>
+
+              <Callout type="info" title="Gallery Features">
+                <ul class="mt-2 space-y-1">
+                  <li>• Responsive grid layout</li>
+                  <li>• Lightbox with keyboard navigation</li>
+                  <li>• Image captions</li>
+                  <li>• Customizable aspect ratio</li>
+                </ul>
+              </Callout>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Interactive Charts</h3>
+            <p class="mb-4">Create dynamic, responsive charts with various visualization options.</p>
+            
+            <div class="space-y-4">
+              <div class="grid gap-4 md:grid-cols-2">
+                <div>
+                  <Chart
+                    client:load
+                    type="line"
+                    title="Knowledge Growth"
+                    labels={chartData.labels}
+                    datasets={chartData.datasets}
+                  />
+                </div>
+                <div>
+                  <Chart
+                    client:load
+                    type="bar"
+                    title="Content Distribution"
+                    labels={chartData.labels}
+                    datasets={chartData.datasets}
+                  />
+                </div>
+              </div>
+
+              <CodeBlock language="markdown" filename="example.mdx">
+                {chartExample}
+              </CodeBlock>
+
+              <Callout type="info" title="Chart Features">
+                <ul class="mt-2 space-y-1">
+                  <li>• Multiple chart types (line, bar)</li>
+                  <li>• Interactive tooltips</li>
+                  <li>• Responsive design</li>
+                  <li>• Dark mode support</li>
+                  <li>• Customizable colors and styles</li>
+                </ul>
+              </Callout>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Quantum Substrate</h3>
+            <p class="mb-4">Interactive background visualization that responds to user interaction.</p>
+            <div class="h-64 relative rounded-lg overflow-hidden border">
+              <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10" />
+            </div>
+          </div>
+
+          <Callout type="info" title="Interactive Components">
+            All interactive components can be embedded directly in your MDX content.
+          </Callout>
+        </div>
+      </section>
+
+      <section id="content-patterns" class="mt-16">
+        <h2 class="text-3xl font-bold mb-6">Content Patterns</h2>
+        
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Content Types</h3>
+            <ul class="space-y-2">
+              <li>📝 Notes - Quick thoughts and observations</li>
+              <li>📚 Essays - In-depth explorations</li>
+              <li>🧪 Experiments - Interactive demonstrations</li>
+              <li>📊 Research - Data-driven analysis</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Content Status</h3>
+            <ul class="space-y-2">
+              <li>🌱 Seed - Initial thoughts</li>
+              <li>🌿 Growing - Active development</li>
+              <li>🌳 Evergreen - Mature content</li>
+            </ul>
+          </div>
+
+          <Mermaid chart={`
+            graph LR
+              A[Seed] --> B[Growing]
+              B --> C[Evergreen]
+              B -.-> D[Archived]
+          `} title="Content Lifecycle" />
+        </div>
+      </section>
+
+      <section class="mt-16 mb-32">
+        <Callout type="success" title="Next Steps">
+          Explore these features in your content:
+          <ul class="mt-2 space-y-1">
+            <li>• Create rich, interactive documentation</li>
+            <li>• Build interconnected knowledge spaces</li>
+            <li>• Develop visual learning experiences</li>
+          </ul>
+        </Callout>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Custom styles for the documentation page */
+  .prose {
+    max-width: 80ch;
+  }
+
+  .prose h1 {
+    @apply mb-8;
+  }
+
+  .prose h2 {
+    @apply mt-12 mb-6;
+  }
+
+  .prose h3 {
+    @apply mt-8 mb-4;
+  }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+</style> 

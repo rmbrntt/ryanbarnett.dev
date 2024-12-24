@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#0A0A0A" />
+  
+  <!-- Wave-particle representation -->
+  <g transform="translate(200, 200)">
+    <!-- Wave component -->
+    <path d="M -180,0 C -150,-40 -120,40 -90,0 C -60,-40 -30,40 0,0 C 30,-40 60,40 90,0 C 120,-40 150,40 180,0" 
+          fill="none" 
+          stroke="#59a066" 
+          stroke-width="3">
+      <animate
+        attributeName="d"
+        values="M -180,0 C -150,-40 -120,40 -90,0 C -60,-40 -30,40 0,0 C 30,-40 60,40 90,0 C 120,-40 150,40 180,0;
+                M -180,0 C -150,40 -120,-40 -90,0 C -60,40 -30,-40 0,0 C 30,40 60,-40 90,0 C 120,40 150,-40 180,0;
+                M -180,0 C -150,-40 -120,40 -90,0 C -60,-40 -30,40 0,0 C 30,-40 60,40 90,0 C 120,-40 150,40 180,0"
+        dur="4s"
+        repeatCount="indefinite"
+      />
+    </path>
+    
+    <!-- Particle component -->
+    <g>
+      <circle cx="0" cy="0" r="15" fill="#59a066">
+        <animate
+          attributeName="r"
+          values="15;17;15;13;15"
+          dur="2s"
+          repeatCount="indefinite"
+        />
+      </circle>
+      
+      <!-- Particle glow -->
+      <circle cx="0" cy="0" r="25" fill="#59a066" opacity="0.3">
+        <animate
+          attributeName="r"
+          values="25;30;25;20;25"
+          dur="2s"
+          repeatCount="indefinite"
+        />
+      </circle>
+    </g>
+    
+    <!-- Measurement lines -->
+    <g stroke="#88d0f3" stroke-width="1" opacity="0.5">
+      <line x1="-160" y1="-80" x2="-160" y2="80" />
+      <line x1="-80" y1="-80" x2="-80" y2="80" />
+      <line x1="0" y1="-80" x2="0" y2="80" />
+      <line x1="80" y1="-80" x2="80" y2="80" />
+      <line x1="160" y1="-80" x2="160" y2="80" />
+    </g>
+    
+    <!-- Probability clouds -->
+    <g>
+      <circle cx="-160" cy="0" r="8" fill="#c596fc" opacity="0.2" />
+      <circle cx="-80" cy="0" r="12" fill="#c596fc" opacity="0.4" />
+      <circle cx="0" cy="0" r="16" fill="#c596fc" opacity="0.6" />
+      <circle cx="80" cy="0" r="12" fill="#c596fc" opacity="0.4" />
+      <circle cx="160" cy="0" r="8" fill="#c596fc" opacity="0.2" />
+    </g>
+    
+    <!-- Wave function labels -->
+    <g font-family="monospace" font-size="14">
+      <text x="-170" y="-90" fill="#59a066">ψ(x)</text>
+      <text x="130" y="-90" fill="#c596fc">|ψ(x)|²</text>
+    </g>
+    
+    <!-- Moving particle effect -->
+    <circle cx="0" cy="0" r="5" fill="#59a066">
+      <animateMotion
+        path="M -180,0 C -150,-40 -120,40 -90,0 C -60,-40 -30,40 0,0 C 30,-40 60,40 90,0 C 120,-40 150,40 180,0"
+        dur="6s"
+        repeatCount="indefinite"
+      />
+    </circle>
+  </g>
+</svg> 
