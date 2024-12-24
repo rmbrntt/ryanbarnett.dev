@@ -45,10 +45,15 @@ jobs:
           echo "Current directory structure:"
           ls -R ./site/dist/
 
+      - name: Create artifact directory
+        run: |
+          mkdir -p ./_site
+          cp -r ./site/dist/* ./_site/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./site/dist
+          path: ./_site
 
   deploy:
     needs: build
