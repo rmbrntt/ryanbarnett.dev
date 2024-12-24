@@ -14,7 +14,7 @@ import { tags } from "./src/markdoc/tags";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://rmbrntt.github.io",
+  site: "https://ryanbarnett.dev",
   integrations: [
     tailwind({
       applyBaseStyles: false,
