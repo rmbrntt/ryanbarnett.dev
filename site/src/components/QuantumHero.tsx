@@ -64,7 +64,7 @@ export default function QuantumHero() {
             variants={textVariants}
           >
             {/* Recent Thoughts */}
-            <div className="card bg-base-900/50 backdrop-blur-sm border-quantum-primary/20">
+            {/* <div className="card bg-base-900/50 backdrop-blur-sm border-quantum-primary/20">
               <h3 className="text-quantum-primary text-lg mb-4">Recent Thoughts</h3>
               <div className="space-y-4">
                 <a href="/thoughts/building-a-digital-garden" className="block group">
@@ -76,10 +76,10 @@ export default function QuantumHero() {
                   <time className="text-sm text-base-300">February 14, 2024</time>
                 </a>
               </div>
-            </div>
+            </div> */}
 
             {/* Active Projects */}
-            <div className="card bg-base-900/50 backdrop-blur-sm border-quantum-secondary/20">
+            {/* <div className="card bg-base-900/50 backdrop-blur-sm border-quantum-secondary/20">
               <h3 className="text-quantum-secondary text-lg mb-4">Active Projects</h3>
               <div className="space-y-4">
                 <div className="group">
@@ -91,23 +91,24 @@ export default function QuantumHero() {
                   <p className="text-sm text-base-300">Growing a knowledge ecosystem</p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
-      </div>
-
-      {/* Explore CTA with improved positioning */}
-      <motion.div 
-        className="relative z-20 w-full flex justify-center pb-8"
+              {/* Explore CTA with improved positioning */}
+              {/* <motion.div 
+        className="relative z-20 w-full flex justify-center"
         variants={textVariants}
       >
         <GentleCTA
           text="Explore"
           variant="vertical-line"
           withBloch={true}
-          className="text-quantum-primary/60"
+          className="text-quantum-primary/60 pt-36"
         />
-      </motion.div>
+      </motion.div> */}
+      </div>
+
+
     </motion.div>
   );
 }
