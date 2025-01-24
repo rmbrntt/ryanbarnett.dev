@@ -34,8 +34,8 @@ export default function QuantumHero() {
 
   return (
     <motion.div 
-      className="relative flex flex-col min-h-[80vh] w-full"
-      variants={containerVariants}
+    className="relative h-full w-full "
+    variants={containerVariants}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
     >
@@ -43,9 +43,9 @@ export default function QuantumHero() {
       <div className="absolute inset-0 bg-gradient-to-b from-base-950 to-base-900 opacity-90" />
       
       {/* Main content container with proper centering */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-4xl mx-auto text-center">
-          <motion.h1 
+      <div className="relative h-full z-10 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-4xl mx-auto text-center">
+      <motion.h1 
             className="text-4xl md:text-5xl lg:text-6xl font-medium text-base-50 mb-6"
             variants={textVariants}
           >
@@ -93,9 +93,13 @@ export default function QuantumHero() {
               </div>
             </div> */}
           </motion.div>
+
         </div>
-              {/* Explore CTA with improved positioning */}
-              {/* <motion.div 
+
+      </div>
+
+                        {/* Explore CTA with improved positioning */}
+                        <motion.div 
         className="relative z-20 w-full flex justify-center"
         variants={textVariants}
       >
@@ -105,10 +109,7 @@ export default function QuantumHero() {
           withBloch={true}
           className="text-quantum-primary/60 pt-36"
         />
-      </motion.div> */}
-      </div>
-
-
+      </motion.div>
     </motion.div>
   );
 }

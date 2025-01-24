@@ -1,0 +1,35 @@
+/* quantum-media.css */
+@layer components {
+    /* Code blocks */
+    pre:not([class]) {
+      @apply my-8 p-6 rounded-lg bg-muted/50 overflow-auto;
+      @apply border border-border;
+    }
+  
+    code:not([class]) {
+      @apply rounded bg-muted px-1.5 py-0.5 text-sm font-mono;
+    }
+  
+    pre code:not([class]) {
+      @apply p-0 bg-transparent;
+    }
+  
+    /* Images and Figures */
+    img:not([class]) {
+      @apply rounded-lg my-8 w-full;
+    }
+  
+    figure:not([class]) {
+      @apply my-12;
+    }
+  
+    figcaption:not([class]) {
+      @apply mt-4 text-sm text-muted-foreground text-center;
+    }
+  
+    /* Math Display */
+    .math-display {
+      @apply my-16 py-8 px-4;
+      @apply bg-gradient-to-r from-transparent via-quantum-primary/5 to-transparent;
+    }
+  }

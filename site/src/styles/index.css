@@ -1,6 +1,10 @@
 @import './global.css';
 @import './quantum.css';
 @import './katex.css';
+@import './quantum/quantum-base.css';
+@import './quantum/quantum-elements.css';
+@import './quantum/quantum-media.css';
+@import './quantum/quantum-components.css';
 
 /* Quantum-specific prose styles */
 .prose-quantum {

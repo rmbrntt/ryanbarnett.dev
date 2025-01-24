@@ -52,13 +52,27 @@ export default {
           css: {
             "--tw-prose-body": "hsl(var(--foreground))",
             "--tw-prose-headings": "hsl(var(--foreground))",
-            "--tw-prose-links": "hsl(var(--foreground))",
-            "--tw-prose-code": "hsl(var(--cyan))",
-            "--tw-prose-quotes": "hsl(var(--muted-foreground))",
+            "--tw-prose-links": "hsl(var(--quantum-primary))",
+            "--tw-prose-bold": "hsl(var(--foreground))",
+            "--tw-prose-code": "hsl(var(--quantum-secondary))",
+            "--tw-prose-pre-code": "hsl(var(--quantum-primary))",
+            "--tw-prose-quote-borders": "hsl(var(--quantum-primary))",
+            maxWidth: "none",
+            code: {
+              backgroundColor: "hsl(var(--muted))",
+              borderRadius: "0.25rem",
+              padding: "0.2em 0.4em",
+            },
+            "code::before": {
+              content: '""',
+            },
+            "code::after": {
+              content: '""',
+            },
           },
         },
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

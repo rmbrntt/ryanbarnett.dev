@@ -171,8 +171,22 @@ export function GentleCTA({
         href="/lab/quantum-substrate"
         onActiveChange={(isActive) => setActiveItem(isActive ? 'substrate' : null)}
       >
-        <span className="relative z-10">Quantum Substrate</span>
+        <span className="relative z-10">Substrate</span>
         {activeItem === 'substrate' && (
+          <motion.div
+            className="absolute inset-0 bg-quantum-primary/5 rounded-md"
+            layoutId="activeBackground"
+            initial={false}
+            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+          />
+        )}
+      </NavigationItem>
+      <NavigationItem 
+        href="/lab/quantum-components"
+        onActiveChange={(isActive) => setActiveItem(isActive ? 'components' : null)}
+      >
+        <span className="relative z-10">Components</span>
+        {activeItem === 'components' && (
           <motion.div
             className="absolute inset-0 bg-quantum-primary/5 rounded-md"
             layoutId="activeBackground"
