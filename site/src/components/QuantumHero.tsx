@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { GentleCTA } from './GentleCTA';
 
 const CTA = ({ textVariants }: { textVariants: any }) => (
     <motion.div 
@@ -107,12 +106,6 @@ export default function QuantumHero() {
         className="relative z-20 w-full flex justify-center"
         variants={textVariants}
       >
-        <GentleCTA
-          text="Explore"
-          variant="vertical-line"
-          withBloch={true}
-          className="text-quantum-primary/60 pt-36"
-        />
       </motion.div> */}
     </motion.div>
   );
