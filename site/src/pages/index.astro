@@ -1,100 +1,87 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import QuantumHero from "../components/QuantumHero";
+import BlogCard from '@/components/BlogCard.astro'
+import Link from '@/components/Link.astro'
+import PageHead from '@/components/PageHead.astro'
+import { buttonVariants } from '@/components/ui/button'
+import { SITE } from '@/consts'
+import Layout from '@/layouts/Layout.astro'
+import { getRecentPosts } from '@/lib/data-utils'
+
+const blog = await getRecentPosts(SITE.featuredPostCount)
 ---
 
-<BaseLayout title="Ryan Barnett">
-  <div class="flex flex-col">
-    <QuantumHero client:load />
-
-    <!-- <section class="container mx-auto px-4 py-16">
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {
-          /* Recent Content - Implemented with proper quantum design system aesthetics */
-        }
-        <div
-          class="card bg-base-900/50 backdrop-blur-sm border-quantum-primary/10">
-          <h3 class="text-xl font-medium text-quantum-primary mb-4">
-            Latest Writing
-          </h3>
-          <div class="space-y-6">
-            <a href="/thoughts/building-a-digital-garden" class="block group">
-              <h4
-                class="text-lg text-base-50 group-hover:text-quantum-primary transition-colors">
-                Building a Digital Garden
-              </h4>
-              <p class="text-base-300 mt-2">
-                Exploring the intersection of knowledge management and digital
-                spaces.
-              </p>
-              <time class="text-sm text-base-400 mt-2 block"
-                >December 24, 2024</time
-              >
-            </a>
-          </div>
-        </div>
-
-        <div
-          class="card bg-base-900/50 backdrop-blur-sm border-quantum-secondary/10">
-          <h3 class="text-xl font-medium text-quantum-secondary mb-4">
-            System Thinking
-          </h3>
-          <div class="space-y-6">
-            <a href="/thoughts/system-thinking" class="block group">
-              <h4
-                class="text-lg text-base-50 group-hover:text-quantum-secondary transition-colors">
-                System Thinking and Software
-              </h4>
-              <p class="text-base-300 mt-2">
-                How systems thinking can improve software architecture.
-              </p>
-              <time class="text-sm text-base-400 mt-2 block"
-                >December 14, 2024</time
-              >
-            </a>
-          </div>
-        </div>
-
-        <div
-          class="card bg-base-900/50 backdrop-blur-sm border-quantum-deep/10">
-          <h3 class="text-xl font-medium text-quantum-deep mb-4">Laboratory</h3>
-          <div class="space-y-6">
-            <a href="/lab" class="block group">
-              <h4
-                class="text-lg text-base-50 group-hover:text-quantum-deep transition-colors">
-                Quantum Experiments
-              </h4>
-              <p class="text-base-300 mt-2">
-                Interactive explorations of quantum design principles.
-              </p>
-              <div class="text-sm text-quantum-deep/60 mt-2">
-                Active Research
-              </div>
-            </a>
-          </div>
-        </div>
+<Layout class="max-w-3xl">
+  <PageHead slot="head" title="Home" />
+  <section>
+    <div class="rounded-lg border">
+      <div class="flex flex-col space-y-1.5 p-6">
+        <h3 class="text-3xl leading-none font-medium">er·u·dite</h3>
+        <p class="text-muted-foreground text-sm">
+          /ˈer(y)əˌdīt/ &bull; <span class="font-medium">adjective</span>
+        </p>
       </div>
-    </section> -->
-  </div>
-</BaseLayout>
-
-<style>
-  /* Quantum card styles */
-  .card {
-    @apply p-6 rounded-lg transition-all duration-300;
-    @apply hover:shadow-lg hover:shadow-quantum-primary/5;
-    @apply hover:translate-y-[-2px];
-    @apply border border-border/40;
-  }
-
-  /* Quantum text effects */
-  .text-quantum-primary {
-    text-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-  }
-  .text-quantum-secondary {
-    text-shadow: 0 0 20px rgba(139, 31, 255, 0.2);
-  }
-  .text-quantum-deep {
-    text-shadow: 0 0 20px rgba(136, 64, 154, 0.2);
-  }
-</style>
+      <div class="p-6 pt-0">
+        <p class="text-muted-foreground mb-2 text-sm">
+          astro-erudite is an opinionated, unstyled static blogging template
+          built with <Link
+            href="https://astro.build"
+            class="text-foreground"
+            external
+            underline>Astro</Link
+          >, <Link
+            href="https://tailwindcss.com"
+            class="text-foreground"
+            external
+            underline>Tailwind</Link
+          >, and <Link
+            href="https://ui.shadcn.com"
+            class="text-foreground"
+            external
+            underline>shadcn/ui</Link
+          >. Extraordinarily loosely based on the <Link
+            href="https://astro-micro.vercel.app/"
+            class="text-foreground"
+            external
+            underline>Astro Micro</Link
+          > theme.
+        </p>
+        <p class="text-muted-foreground text-sm">
+          To use this template, check out the <Link
+            href="https://github.com/jktrn/astro-erudite"
+            class="text-foreground"
+            underline
+            external>GitHub</Link
+          > repository. To learn more about why this template exists, read this blog
+          post: <Link
+            href="/blog/the-state-of-static-blogs"
+            class="text-foreground"
+            underline>The State of Static Blogs in 2024</Link
+          >.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="flex flex-col gap-y-4">
+    <h2 class="text-2xl font-medium">Latest posts</h2>
+    <ul class="flex flex-col gap-y-4">
+      {
+        blog.map((post) => (
+          <li>
+            <BlogCard entry={post} />
+          </li>
+        ))
+      }
+    </ul>
+    <div class="flex justify-center">
+      <Link
+        href="/blog"
+        class={buttonVariants({ variant: 'ghost' }) + ' group'}
+      >
+        See all posts <span
+          class="ml-1.5 transition-transform group-hover:translate-x-1"
+          >&rarr;</span
+        >
+      </Link>
+    </div>
+  </section>
+</Layout>
