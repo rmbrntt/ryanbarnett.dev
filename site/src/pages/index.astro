@@ -6,226 +6,178 @@ import Layout from '@/layouts/Layout.astro'
 import { getRecentPosts } from '@/lib/data-utils'
 import { cn } from '@/lib/utils'
 
-const recentPosts = await getRecentPosts(8)
-const featuredPost = recentPosts[0]
-const otherPosts = recentPosts.slice(1, 7)
+const allPosts = await getRecentPosts(20)
+const recentPosts = allPosts.slice(0, 10)
+const popularPosts = allPosts.slice(0, 5) // Mock popular posts for now
 
-// Mock data for now - replace with real content
+// Mock data for experiments
 const experiments = [
-  { title: 'Color perception in CIELAB space', href: '#', type: 'research' },
-  { title: 'WebGL particle systems', href: '#', type: 'code' },
-  { title: 'Information density experiments', href: '#', type: 'design' },
+  { title: 'Color perception in CIELAB space', href: '#', date: 'Dec 2024' },
+  { title: 'WebGL particle systems', href: '#', date: 'Nov 2024' },
+  { title: 'Information density experiments', href: '#', date: 'Oct 2024' },
 ]
 ---
 
 <Layout class="max-w-7xl">
   <PageHead slot="head" title="Ryan Barnett" />
   
-  <!-- Hero -->
-  <header class="mb-20 pt-8">
-    <h1 class="text-6xl font-light tracking-tight mb-6">
-      Ryan Barnett
-    </h1>
-    <p class="text-xl text-foreground/70 max-w-3xl leading-relaxed">
+  <!-- Header -->
+  <header class="mb-12 pt-4">
+    <h1 class="text-3xl font-normal mb-4">Ryan Barnett</h1>
+    <p class="text-base text-foreground/80 max-w-3xl">
       Senior engineer turned engineering leader. Previously at The Washington Post, 
       where I helped build systems that served millions of readers daily. 
-      Currently exploring tools for thought and information architecture.
+      I write about software architecture, web performance, and the intersection 
+      of technology and human systems. Currently exploring tools for thought and information architecture.
     </p>
+    <nav class="mt-6 flex gap-6 text-sm">
+      <Link href="/about" class="hover:underline">About</Link>
+      <Link href="/blog" class="hover:underline">Blog</Link>
+      <Link href="https://github.com/rmbrntt" external class="hover:underline">GitHub↗</Link>
+      <Link href="/rss.xml" class="hover:underline">RSS</Link>
+    </nav>
   </header>
 
-  <!-- Main Grid -->
-  <div class="grid grid-cols-12 gap-x-8 gap-y-16">
+  <!-- Main Content Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
     
-    <!-- Featured Story -->
-    {featuredPost && (
-      <article class="col-span-12 lg:col-span-8 group">
-        <Link href={`/blog/${featuredPost.id}`} class="block">
-          <div class="space-y-4">
-            <div class="overflow-hidden bg-muted aspect-[16/9] lg:aspect-[2/1]">
-              {featuredPost.data.image ? (
-                <img 
-                  src={featuredPost.data.image.src} 
-                  alt={featuredPost.data.title}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              ) : (
-                <div class="w-full h-full bg-gradient-to-br from-muted to-muted-foreground/10" />
-              )}
-            </div>
-            <div class="space-y-3">
-              <h2 class="text-3xl font-normal leading-tight group-hover:text-primary transition-colors">
-                {featuredPost.data.title}
-              </h2>
-              {featuredPost.data.description && (
-                <p class="text-lg text-muted-foreground line-clamp-2">
-                  {featuredPost.data.description}
-                </p>
-              )}
-              <p class="text-sm text-muted-foreground">
-                {new Date(featuredPost.data.date).toLocaleDateString('en-US', { 
-                  month: 'long', 
+    <!-- Primary Column - Recent Writing -->
+    <div class="lg:col-span-2 space-y-8">
+      <section>
+        <h2 class="text-lg font-semibold mb-4 pb-2 border-b">Recent Writing</h2>
+        <ul class="space-y-1">
+          {recentPosts.map((post, index) => (
+            <li class="flex items-baseline gap-4 py-2 group">
+              <time datetime={post.data.date.toISOString()} class="text-sm text-muted-foreground whitespace-nowrap">
+                {new Date(post.data.date).toLocaleDateString('en-US', { 
+                  month: 'short', 
                   day: 'numeric',
                   year: 'numeric'
                 })}
-              </p>
-            </div>
-          </div>
-        </Link>
-      </article>
-    )}
+              </time>
+              <Link 
+                href={`/blog/${post.id}`} 
+                class="hover:underline flex-1"
+              >
+                {post.data.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-4 pt-4 border-t">
+          <Link href="/blog" class="text-sm text-muted-foreground hover:text-foreground hover:underline">
+            View all posts →
+          </Link>
+        </div>
+      </section>
+
+      <!-- Experiments/Projects -->
+      <section>
+        <h2 class="text-lg font-semibold mb-4 pb-2 border-b">Experiments & Ideas</h2>
+        <ul class="space-y-1">
+          {experiments.map(exp => (
+            <li class="flex items-baseline gap-4 py-2">
+              <span class="text-sm text-muted-foreground whitespace-nowrap">
+                {exp.date}
+              </span>
+              <Link href={exp.href} class="hover:underline flex-1">
+                {exp.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
 
     <!-- Sidebar -->
-    <aside class="col-span-12 lg:col-span-4 space-y-12">
+    <aside class="space-y-8">
+      <!-- Popular -->
+      <section>
+        <h3 class="text-lg font-semibold mb-4 pb-2 border-b">Popular</h3>
+        <ul class="space-y-2">
+          {popularPosts.map(post => (
+            <li>
+              <Link href={`/blog/${post.id}`} class="text-sm hover:underline">
+                {post.data.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <!-- Now -->
       <section>
-        <h3 class="text-xs uppercase tracking-wider text-muted-foreground mb-4">Now</h3>
-        <div class="prose prose-sm dark:prose-invert">
-          <p class="text-foreground/80">
-            Building in public. Writing about web performance, 
-            architecture patterns, and the craft of engineering leadership.
+        <h3 class="text-lg font-semibold mb-4 pb-2 border-b">Now</h3>
+        <div class="text-sm text-foreground/80 space-y-2">
+          <p>Building in public, exploring the edges of web technology.</p>
+          <p>Focus areas:</p>
+          <ul class="ml-4 space-y-1">
+            <li>• Tools for thought</li>
+            <li>• Information architecture</li>
+            <li>• Web performance</li>
+            <li>• Engineering leadership</li>
+          </ul>
+          <p class="text-xs text-muted-foreground pt-2">
+            Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
           </p>
         </div>
       </section>
 
-      <!-- Quick Links -->
+      <!-- External Links -->
       <section>
-        <h3 class="text-xs uppercase tracking-wider text-muted-foreground mb-4">Connect</h3>
-        <div class="flex gap-4">
-          <Link 
-            href="https://github.com/rmbrntt" 
-            external
-            class="text-foreground/60 hover:text-foreground transition-colors"
-            aria-label="GitHub"
-          >
-            <Icon name="lucide:github" class="w-5 h-5" />
-          </Link>
-          <Link 
-            href="#" 
-            external
-            class="text-foreground/60 hover:text-foreground transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Icon name="lucide:linkedin" class="w-5 h-5" />
-          </Link>
-          <Link 
-            href="/rss.xml"
-            class="text-foreground/60 hover:text-foreground transition-colors"
-            aria-label="RSS Feed"
-          >
-            <Icon name="lucide:rss" class="w-5 h-5" />
-          </Link>
-        </div>
-      </section>
-    </aside>
-
-    <!-- Recent Posts Grid -->
-    {otherPosts.length > 0 && (
-      <section class="col-span-12">
-        <h2 class="text-xs uppercase tracking-wider text-muted-foreground mb-6">Recent Writing</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {otherPosts.map((post, index) => (
-            <article class={cn(
-              "group",
-              index === 0 && "md:col-span-2 lg:col-span-1",
-              index === 3 && "lg:col-span-2"
-            )}>
-              <Link href={`/blog/${post.id}`} class="block space-y-3">
-                {(index === 0 || index === 3) && post.data.image && (
-                  <div class="overflow-hidden bg-muted aspect-[16/9]">
-                    <img 
-                      src={post.data.image.src} 
-                      alt={post.data.title}
-                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                )}
-                <div>
-                  <h3 class={cn(
-                    "font-normal leading-snug group-hover:text-primary transition-colors",
-                    (index === 0 || index === 3) ? "text-xl" : "text-lg"
-                  )}>
-                    {post.data.title}
-                  </h3>
-                  <p class="text-sm text-muted-foreground mt-2">
-                    {new Date(post.data.date).toLocaleDateString('en-US', { 
-                      month: 'short', 
-                      day: 'numeric' 
-                    })}
-                  </p>
-                </div>
-              </Link>
-            </article>
-          ))}
-        </div>
-        <div class="mt-8 text-center">
-          <Link 
-            href="/blog" 
-            class="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-2"
-          >
-            View all posts 
-            <Icon name="lucide:arrow-right" class="w-4 h-4" />
-          </Link>
-        </div>
-      </section>
-    )}
-
-    <!-- Experiments -->
-    <section class="col-span-12 lg:col-span-8">
-      <h2 class="text-xs uppercase tracking-wider text-muted-foreground mb-6">Experiments & Ideas</h2>
-      <div class="space-y-1">
-        {experiments.map(exp => (
-          <Link 
-            href={exp.href} 
-            class="group flex items-center justify-between py-4 border-b border-border/50 hover:border-foreground/20 transition-colors"
-          >
-            <div class="flex items-center gap-4">
-              <span class="text-lg group-hover:text-primary transition-colors">
-                {exp.title}
-              </span>
-              <span class="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">
-                {exp.type}
-              </span>
-            </div>
-            <Icon 
-              name="lucide:arrow-up-right" 
-              class="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" 
-            />
-          </Link>
-        ))}
-      </div>
-    </section>
-
-    <!-- Reading List -->
-    <section class="col-span-12 lg:col-span-4">
-      <h2 class="text-xs uppercase tracking-wider text-muted-foreground mb-6">Reading & Inspiration</h2>
-      <ul class="space-y-3">
-        {[
-          { text: 'Tools for Thought', author: 'Howard Rheingold', href: '#' },
-          { text: 'The Garden and the Stream', author: 'Mike Caulfield', href: '#' },
-          { text: 'How to Make Sense of Any Mess', author: 'Abby Covert', href: '#' },
-        ].map(item => (
+        <h3 class="text-lg font-semibold mb-4 pb-2 border-b">Elsewhere</h3>
+        <ul class="space-y-2 text-sm">
           <li>
-            <Link 
-              href={item.href} 
-              class="group flex flex-col"
-            >
-              <span class="text-foreground/80 group-hover:text-primary transition-colors">
-                {item.text}
-              </span>
-              <span class="text-xs text-muted-foreground">
-                {item.author}
-              </span>
+            <Link href="https://github.com/rmbrntt" external class="hover:underline">
+              GitHub
             </Link>
           </li>
-        ))}
-      </ul>
-    </section>
+          <li>
+            <Link href="https://linkedin.com/in/rmbrntt" external class="hover:underline">
+              LinkedIn
+            </Link>
+          </li>
+          <li>
+            <Link href="https://twitter.com/rmbrntt" external class="hover:underline">
+              Twitter
+            </Link>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Reading -->
+      <section>
+        <h3 class="text-lg font-semibold mb-4 pb-2 border-b">Reading & Inspiration</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <Link href="#" external class="hover:underline">
+              Tools for Thought
+            </Link>
+            <span class="text-muted-foreground"> — Howard Rheingold</span>
+          </li>
+          <li>
+            <Link href="#" external class="hover:underline">
+              The Garden and the Stream
+            </Link>
+            <span class="text-muted-foreground"> — Mike Caulfield</span>
+          </li>
+          <li>
+            <Link href="#" external class="hover:underline">
+              How to Make Sense of Any Mess
+            </Link>
+            <span class="text-muted-foreground"> — Abby Covert</span>
+          </li>
+        </ul>
+      </section>
+    </aside>
   </div>
 
   <!-- Footer -->
-  <footer class="mt-24 pt-12 border-t border-border/50">
-    <p class="text-xs text-muted-foreground">
-      This site grows through continuous iteration. Rough edges are features, not bugs.
+  <footer class="mt-16 pt-8 border-t text-sm text-muted-foreground">
+    <p>
+      This site is a continuous work in progress. 
+      <Link href="/colophon" class="hover:underline">Colophon</Link> • 
+      <Link href="/changelog" class="hover:underline">Changelog</Link>
     </p>
   </footer>
 </Layout>
