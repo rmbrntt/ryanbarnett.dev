@@ -1,0 +1,110 @@
+---
+import Link from '@/components/Link.astro'
+import PageHead from '@/components/PageHead.astro'
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout class="max-w-3xl">
+  <PageHead slot="head" title="Colophon" />
+  
+  <article class="prose prose-gray dark:prose-invert max-w-none">
+    <h1>Colophon</h1>
+    
+    <p>
+      This site is built with a focus on simplicity, performance, and longevity. 
+      The design philosophy prioritizes content over chrome, readability over novelty.
+    </p>
+
+    <h2>Technology</h2>
+    
+    <p>The site is built using:</p>
+    
+    <ul>
+      <li>
+        <Link href="https://astro.build" external>Astro</Link> — A modern static site generator 
+        that ships zero JavaScript by default
+      </li>
+      <li>
+        <Link href="https://tailwindcss.com" external>Tailwind CSS</Link> — For utility-first styling
+      </li>
+      <li>
+        <Link href="https://ui.shadcn.com" external>shadcn/ui</Link> — For accessible UI components
+      </li>
+      <li>
+        <Link href="https://www.typescriptlang.org" external>TypeScript</Link> — For type safety
+      </li>
+    </ul>
+
+    <h2>Typography</h2>
+    
+    <p>
+      The site uses system fonts for optimal performance and native feel. 
+      Text is set in your operating system's default sans-serif font stack, 
+      ensuring fast load times and familiar reading experience.
+    </p>
+
+    <h2>Design Principles</h2>
+    
+    <ul>
+      <li><strong>Performance first</strong> — Every decision considers load time and runtime performance</li>
+      <li><strong>Progressive enhancement</strong> — The site works without JavaScript</li>
+      <li><strong>Accessibility</strong> — WCAG compliant with semantic HTML and proper ARIA labels</li>
+      <li><strong>Longevity</strong> — Built to last with minimal dependencies and standard web technologies</li>
+    </ul>
+
+    <h2>Inspiration</h2>
+    
+    <p>
+      This site draws inspiration from several sources that exemplify thoughtful web design:
+    </p>
+    
+    <ul>
+      <li>
+        <Link href="https://gwern.net" external>Gwern Branwen</Link> — For demonstrating the power 
+        of information density and long-form content
+      </li>
+      <li>
+        <Link href="https://frankchimero.com" external>Frank Chimero</Link> — For elegant simplicity
+      </li>
+      <li>
+        <Link href="https://craigmod.com" external>Craig Mod</Link> — For thoughtful typography 
+        and reading experience
+      </li>
+      <li>
+        The newspaper layouts from my time at The Washington Post — For modular, flexible content systems
+      </li>
+    </ul>
+
+    <h2>Privacy</h2>
+    
+    <p>
+      This site collects no analytics, sets no tracking cookies, and stores no personal data. 
+      What you read is your business.
+    </p>
+
+    <h2>Source</h2>
+    
+    <p>
+      The source code for this site is available on 
+      <Link href="https://github.com/rmbrntt/ryanbarnett.dev" external>GitHub</Link>.
+      Feel free to explore, learn, or adapt anything you find useful.
+    </p>
+
+    <h2>Contact</h2>
+    
+    <p>
+      You can reach me via email at <Link href="mailto:hello@ryanbarnett.dev">hello@ryanbarnett.dev</Link> 
+      or find me on <Link href="https://github.com/rmbrntt" external>GitHub</Link>.
+    </p>
+
+    <hr />
+    
+    <p class="text-sm text-muted-foreground">
+      Last updated: {new Date().toLocaleDateString('en-US', { 
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })}
+    </p>
+  </article>
+</Layout>
