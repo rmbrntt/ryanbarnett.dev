@@ -1,0 +1,1032 @@
+---
+title: 'Kitchen Sink: Complete Feature Showcase'
+description: 'An exhaustive demonstration of every single feature available in this Astro-powered blog system, including MDX components, advanced code highlighting, all callout variants, and more.'
+date: 2025-08-09
+tags: ['demo', 'features', 'mdx', 'showcase']
+image: './banner.png'
+authors: ['ryanbarnett']
+draft: false
+---
+
+import Callout from '@/components/Callout.astro'
+import { Icon } from 'astro-icon/components'
+
+## Introduction
+
+Welcome to the ultimate kitchen sink! This post demonstrates **every single feature** available in this blog system with live, working examples that you can see in action.
+
+<Callout variant="tip" title="Navigation Tip">
+  This is a long post! Use the table of contents on the left (desktop) or the sticky header (mobile) to navigate between sections. Notice how the TOC highlights your current position as you scroll!
+</Callout>
+
+## Text Formatting Basics
+
+Let's start with basic text formatting. You can write in **bold**, *italic*, ***bold italic***, and ~~strikethrough~~. You can also use `inline code` and create [links to external sites](https://astro.build) or [internal pages](/blog).
+
+For keyboard shortcuts, use the `<kbd>` tag: Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy, <kbd>Ctrl</kbd> + <kbd>V</kbd> to paste, or <kbd>Cmd</kbd> + <kbd>K</kbd> on Mac.
+
+Abbreviations are helpful for technical terms: <abbr title="HyperText Markup Language">HTML</abbr>, <abbr title="Cascading Style Sheets">CSS</abbr>, <abbr title="Application Programming Interface">API</abbr>, and <abbr title="Search Engine Optimization">SEO</abbr> are fundamental web technologies.
+
+## Headings Hierarchy
+
+### Third Level Heading
+
+Content under third level heading with some text to demonstrate the hierarchy.
+
+#### Fourth Level Heading
+
+Content under fourth level heading, getting deeper into the structure.
+
+##### Fifth Level Heading
+
+Content under fifth level heading. Notice how the TOC tracks all these levels.
+
+###### Sixth Level Heading
+
+Content under sixth level heading. This is as deep as headings go!
+
+## Lists and Tasks
+
+### Unordered Lists
+
+- First item with some content
+- Second item with **bold text**
+  - Nested item with `inline code`
+  - Another nested item with a [link](#)
+    - Deeply nested with *italic*
+    - Even more deeply nested
+- Third item back at the top level
+
+### Ordered Lists
+
+1. First step in the process
+2. Second step with more detail
+   1. Sub-step A with specific instructions
+   2. Sub-step B with additional notes
+      1. Even more detailed sub-sub-step
+      2. Another sub-sub-step
+3. Third step to complete the process
+
+### Task Lists
+
+- [x] Completed task with ~~strikethrough~~
+- [x] Another finished item
+- [ ] Incomplete task waiting to be done
+- [ ] Future enhancement to consider
+- [x] Recently completed feature
+
+### Mixed Lists
+
+1. Ordered item one
+   - Unordered sub-item
+   - Another unordered sub-item
+     1. Back to ordered
+     2. More ordered items
+2. Ordered item two
+   - [x] Task item inside
+   - [ ] Uncompleted task
+
+## Blockquotes and Citations
+
+> The web is more a social creation than a technical one. I designed it for a social effect—to help people work together—and not as a technical toy.
+>
+> —<cite>Tim Berners-Lee, Weaving the Web</cite>
+
+Nested blockquotes work too:
+
+> This is the outer quote talking about something important.
+>
+> > This is a nested quote providing additional context or a response.
+> >
+> > —<cite>Anonymous Reviewer</cite>
+>
+> Back to the outer quote with final thoughts.
+
+## Tables
+
+### Basic Table
+
+| Framework | Initial Release | Latest Version | Stars on GitHub |
+|-----------|----------------|----------------|-----------------|
+| React     | 2013          | 18.2.0         | 200k+          |
+| Vue       | 2014          | 3.3.0          | 206k+          |
+| Angular   | 2016          | 16.0.0         | 93k+           |
+| Svelte    | 2016          | 4.0.0          | 75k+           |
+| Astro     | 2021          | 4.0.0          | 42k+           |
+
+### Complex Table with Alignment
+
+| Feature | Description | Supported | Performance Impact |
+|:--------|:------------|:---------:|-------------------:|
+| SSG | Static Site Generation | ✅ | Excellent |
+| SSR | Server-Side Rendering | ✅ | Good |
+| ISR | Incremental Static Regeneration | ⚠️ | Varies |
+| CSR | Client-Side Rendering | ✅ | Depends |
+| Hydration | Partial Hydration | ✅ | Optimized |
+
+## Code Blocks - Basic Features
+
+### Simple Code Block with Syntax Highlighting
+
+Every code block automatically gets:
+- ✅ Syntax highlighting based on language
+- ✅ A copy button in the top right corner
+- ✅ Proper formatting and indentation
+- ✅ Dark/light theme support
+
+```javascript
+// A simple function with automatic syntax highlighting
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('World')); // Try the copy button! →
+```
+
+### Code Block with Line Numbers
+
+Add `showLineNumbers` to display line numbers:
+
+```typescript title="utils.ts" showLineNumbers
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+// Usage example
+const className = cn(
+  'text-base',
+  condition && 'text-lg',
+  'font-semibold'
+)
+```
+
+### Custom Starting Line Number
+
+Use `startLineNumber` to start counting from a specific line:
+
+```python title="excerpt.py" showLineNumbers startLineNumber=42
+# This is line 42!
+def process_batch(data):
+    """Process a batch of data items."""
+    results = []
+    for item in data:
+        processed = transform(item)  # Line 47
+        validated = validate(processed)
+        results.append(validated)
+    return results  # Line 50
+```
+
+## Code Blocks - Line Highlighting
+
+### Basic Line Highlighting
+
+Use `{5-7,10}` to highlight specific lines (they get a highlighted background):
+
+```jsx title="App.jsx" showLineNumbers {5-7,10}
+import React, { useState } from 'react'
+
+function App() {
+  // This line is NOT highlighted
+  const [count, setCount] = useState(0)  // ← HIGHLIGHTED
+  const [name, setName] = useState('')   // ← HIGHLIGHTED  
+  const [isVisible, setIsVisible] = useState(true)  // ← HIGHLIGHTED
+  
+  // This line is NOT highlighted either
+  const increment = () => setCount(c => c + 1)  // ← HIGHLIGHTED
+  
+  return (
+    <div>
+      <h1>Counter: {count}</h1>
+      <button onClick={increment}>Increment</button>
+    </div>
+  )
+}
+```
+
+## Code Blocks - Diff Highlighting
+
+### Line-Based Diffs
+
+Use `ins={lines}` for additions (green background) and `del={lines}` for deletions (red background):
+
+```python title="api_changes.py" showLineNumbers ins={9-11} del={13-15}
+import requests
+from datetime import datetime
+
+def fetch_data(endpoint):
+    """Fetch data from the API endpoint."""
+    headers = {
+        'Authorization': 'Bearer token',
+        'Content-Type': 'application/json',
+        # New headers added ↓ (GREEN BACKGROUND)
+        'X-API-Version': '2.0',
+        'X-Request-ID': generate_request_id()
+    }
+    # Old implementation removed ↓ (RED BACKGROUND)
+    # response = requests.get(endpoint)
+    # data = response.json()
+    # return data
+    
+    # New implementation
+    response = requests.get(endpoint, headers=headers)
+    response.raise_for_status()
+    return response.json()
+```
+
+### Labeled Diff Sections
+
+You can also label your additions and deletions:
+
+```js title="refactor.js" showLineNumbers ins={"New async pattern":5-10} del={"Old callback pattern":1-3}
+// fetchData((err, data) => {           ← RED with label "Old callback pattern"
+//   if (err) handleError(err);
+// });
+
+async function main() {                  // ← GREEN with label "New async pattern"
+  try {
+    const data = await fetchData();
+    console.log(data);
+  } catch (err) {
+    handleError(err);
+  }
+}
+```
+
+## Code Blocks - Advanced Highlighting
+
+### Combined Features
+
+Mix line highlighting, diffs, and labeled sections all together:
+
+```typescript title="refactor.ts" showLineNumbers {5} ins={7-9} del={11-12} {"Important":18-20}
+class UserService {
+  private users: Map<string, User>
+  
+  constructor() {
+    this.users = new Map() // ← HIGHLIGHTED (yellow background)
+    
+    // New initialization code ↓ (GREEN)
+    this.setupEventListeners()
+    this.loadInitialData()
+    
+    // Old initialization removed ↓ (RED)
+    // this.users = {}
+  }
+  
+  async getUser(id: string): Promise<User> {
+    const user = this.users.get(id)
+    
+    // This section is marked as "Important" ↓ (HIGHLIGHTED)
+    if (!user) {
+      throw new UserNotFoundError(id)
+    }
+    
+    return user
+  }
+}
+```
+
+### Token Highlighting
+
+Specific words/tokens are highlighted throughout the code:
+
+```javascript title="token-demo.js" showLineNumbers "console" ins="log" del="error" "important"
+// The word "console" is highlighted everywhere it appears
+console.log('This log statement has "log" in green')
+console.error('This has "error" in red')
+
+// The word "important" is highlighted in gray
+const important = 'This variable name is highlighted'
+
+// Multiple tokens are highlighted with their respective colors
+function important() {
+  console.log('Multiple tokens highlighted')
+  console.error('Should not use error here')
+}
+```
+
+## Code Blocks - Collapsible Sections
+
+### Basic Collapse
+
+Click the collapse indicator to expand/collapse hidden lines:
+
+```css title="styles.css" showLineNumbers collapse={5-15}
+/* Main styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  /* ↓ THESE LINES CAN BE COLLAPSED/EXPANDED */
+  padding: 2rem;
+  background-color: var(--bg-primary);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  /* ↑ CLICK THE COLLAPSE INDICATOR TO TOGGLE */
+  z-index: 10;
+}
+```
+
+### Multiple Collapsed Sections
+
+You can have multiple collapsible regions:
+
+```javascript title="config.js" showLineNumbers collapse={4-8,12-17,21-26}
+const config = {
+  app: {
+    name: 'My Application',
+    // ↓ Database config (COLLAPSIBLE)
+    database: {
+      host: 'localhost',
+      port: 5432,
+      name: 'myapp_db',
+    },
+    
+    // API configuration
+    api: {
+      // ↓ API details (COLLAPSIBLE)
+      baseUrl: '/api/v1',
+      timeout: 30000,
+      retries: 3,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+    
+    // ↓ Feature flags (COLLAPSIBLE)
+    features: {
+      analytics: true,
+      newsletter: false,
+      comments: true,
+      darkMode: true,
+    },
+  },
+}
+```
+
+## Code Blocks - Terminal and Editor Frames
+
+### Terminal Frame (Automatic)
+
+Console/terminal languages automatically get terminal-style frames:
+
+```console title="Installing dependencies"
+$ pnpm install @astrojs/mdx @astrojs/react astro-icon
+Packages: +142
+++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 142, reused 138, downloaded 4, added 142, done
+
+dependencies:
++ @astrojs/mdx 2.0.0
++ @astrojs/react 3.0.0  
++ astro-icon 1.0.0
+
+Done in 3.2s
+
+$ pnpm run dev
+
+> blog@0.0.1 dev /Users/developer/blog
+> astro dev
+
+  🚀 astro  v4.0.0 started in 123ms
+  
+  ┃ Local    http://localhost:4321/
+  ┃ Network  use --host to expose
+```
+
+### Editor Frame with Title and Caption
+
+Non-terminal languages get editor frames. Use `title` for the filename and `caption` for description:
+
+```typescript title="advanced-types.ts" caption="Advanced TypeScript type utilities for deep object manipulation" showLineNumbers
+type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>
+    }
+  : T
+
+type DeepRequired<T> = T extends object
+  ? {
+      [P in keyof T]-?: DeepRequired<T[P]>
+    }
+  : T
+
+// Usage examples
+interface User {
+  id: string
+  profile: {
+    name: string
+    settings: {
+      theme: 'light' | 'dark'
+      notifications: boolean
+    }
+  }
+}
+
+type PartialUser = DeepPartial<User>  // All properties optional
+type RequiredUser = DeepRequired<User> // All properties required
+```
+
+## Code Blocks - The Ultimate Example
+
+This example from the original blog post demonstrates EVERY feature at once:
+
+````mdx
+```ts title="example.ts" showLineNumbers startLineNumber=100 ins={3} del={4} {5} {"Interesting code":12-16} ins={"Added cool code":18-25} del={"Deleted dangerous code":27-33} collapse={37-40} "awesome" ins="added" del="deleted"
+// Code here with all features...
+```
+````
+
+And here's what it looks like rendered:
+
+```ts title="example.ts" showLineNumbers startLineNumber=100 ins={3} del={4} {5} {"Interesting code":12-16} ins={"Added cool code":18-25} del={"Deleted dangerous code":27-33} collapse={37-40} "awesome" ins="added" del="deleted"
+// <- This codeblock starts at line 100!
+
+// This line should be marked as a diff addition (GREEN)
+// This line should be marked as a diff deletion (RED)
+// This line should be highlighted (YELLOW)
+
+// The keyword "added" will be highlighted in green
+// The keyword "deleted" will be highlighted in red  
+// The keyword "awesome" will be marked with gray
+
+// Insert an empty line above code you wish to add a note to
+
+function demonstrateFeatures() {  // ← "Interesting code" section
+  console.log('Hello world!')
+  return true
+}
+
+
+function obfuscateString(input) {  // ← "Added cool code" section (GREEN)
+  return Buffer.from(input)
+    .toString('base64')
+    .replace(/[A-Za-z]/g, (c) =>
+      String.fromCharCode(c.charCodeAt(0) + (Math.random() > 0.5 ? 1 : -1)),
+    )
+}
+
+
+function deleteAllFiles() {  // ← "Deleted dangerous code" section (RED)
+  fs.rmdirSync('/etc', { recursive: true })
+  fs.rmdirSync('/usr', { recursive: true })
+  fs.rmdirSync('/home', { recursive: true })
+  return 'System wiped!'
+}
+
+// These lines can be collapsed ↓ (CLICK TO EXPAND/COLLAPSE)
+interface HidingStuffHere {
+  name: string
+  age: number
+  email: string
+  phone: string
+}
+```
+
+## Inline Code with Syntax Highlighting
+
+You can highlight inline code with specific languages using `{:language}` syntax:
+
+- JavaScript: `console.log("Hello, world!"){:js}`
+- Python: `print("Hello, world!"){:python}`
+- TypeScript: `const greeting: string = "Hello"{:ts}`
+- CSS: `background-color: #f0f0f0{:css}`
+- HTML: `<div class="container"></div>{:html}`
+- SQL: `SELECT * FROM users WHERE active = true{:sql}`
+- Bash: `npm install --save-dev prettier{:bash}`
+- JSON: `{"name": "example", "version": "1.0.0"}{:json}`
+
+You can even use it mid-sentence: the function `Array.prototype.map(){:js}` transforms each element, while `filter(){:js}` selects elements matching a condition.
+
+## Mathematics with LaTeX
+
+### Inline Mathematics
+
+Here are some inline math examples: The quadratic formula is $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$. Euler's identity states that $e^{i\pi} + 1 = 0$. The derivative of $x^n$ is $nx^{n-1}$.
+
+### Display Mathematics
+
+The Gaussian integral:
+
+$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$
+
+Matrix multiplication:
+
+$$
+\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{bmatrix}
+=
+\begin{bmatrix}
+b_1 \\
+b_2 \\
+\vdots \\
+b_m
+\end{bmatrix}
+$$
+
+The Schrödinger equation:
+
+$$
+i\hbar\frac{\partial}{\partial t}\Psi(\mathbf{r},t) = \hat{H}\Psi(\mathbf{r},t)
+$$
+
+## Callout Components - General Purpose
+
+<Callout variant="note">
+  This is a **note** callout. Use it for general information that supplements the main content. It can contain `inline code`, **bold text**, and even [links](#).
+</Callout>
+
+<Callout variant="tip" title="Productivity Enhancement">
+  This is a **tip** callout with a custom title. Perfect for sharing helpful advice or shortcuts.
+  
+  You can include multiple paragraphs, lists:
+  - First tip
+  - Second tip
+  - Third tip
+  
+  And even code blocks:
+  ```js
+  // Quick tip code
+  const quickWin = true;
+  ```
+</Callout>
+
+<Callout variant="warning" title="Cross-browser Compatibility">
+  This is a **warning** callout. Use it to alert users about potential issues or things to be careful about.
+  
+  ⚠️ This feature may not work in all browsers:
+  - ❌ Internet Explorer 11
+  - ⚠️ Safari 14 (partial support)
+  - ✅ Chrome 90+
+  - ✅ Firefox 88+
+</Callout>
+
+<Callout variant="danger" title="Destructive Operation">
+  This is a **danger** callout. Reserve this for critical warnings about destructive or irreversible actions.
+  
+  **This operation will permanently delete all data!**
+  
+  ```bash
+  # DO NOT RUN unless you're absolutely sure
+  rm -rf --no-preserve-root /
+  ```
+</Callout>
+
+<Callout variant="important" title="Breaking Changes in v2.0">
+  This is an **important** callout. Use it for critical information that users must be aware of.
+  
+  Major API changes:
+  1. `configure()` now returns a Promise
+  2. Authentication requires an API key object
+  3. Event handlers use a new callback pattern
+  
+  ```diff
+  - app.configure("api-key-string");
+  + await app.configure({ key: "api-key-string", version: "2.0" });
+  ```
+</Callout>
+
+## Callout Components - Academic/Mathematical
+
+<Callout variant="definition" title="Continuous Function">
+  A function $f: X \to Y$ between topological spaces is **continuous** if for every open set $V \subseteq Y$, the preimage $f^{-1}(V)$ is open in $X$.
+  
+  For metric spaces, this is equivalent to the $\epsilon$-$\delta$ definition.
+</Callout>
+
+<Callout variant="theorem" title="Fundamental Theorem of Calculus">
+  Let $f$ be a continuous real-valued function defined on a closed interval $[a, b]$. If $F$ is defined by
+  
+  $$F(x) = \int_a^x f(t)\,dt$$
+  
+  then $F$ is uniformly continuous on $[a, b]$ and differentiable on $(a, b)$, and $F'(x) = f(x)$.
+  
+  <Callout variant="proof">
+    Let $x, x + h \in (a, b)$. Then:
+    
+    $$\frac{F(x+h) - F(x)}{h} = \frac{1}{h}\int_x^{x+h} f(t)\,dt$$
+    
+    By the mean value theorem for integrals, there exists $c \in [x, x+h]$ such that:
+    
+    $$\frac{1}{h}\int_x^{x+h} f(t)\,dt = f(c)$$
+    
+    As $h \to 0$, we have $c \to x$, and by continuity of $f$, $f(c) \to f(x)$.
+    
+    Therefore, $F'(x) = f(x)$. □
+  </Callout>
+</Callout>
+
+<Callout variant="lemma" title="Zorn's Lemma">
+  Every non-empty partially ordered set in which every chain has an upper bound contains at least one maximal element.
+  
+  <Callout variant="remark">
+    Zorn's Lemma is equivalent to the Axiom of Choice and the Well-Ordering Theorem.
+  </Callout>
+</Callout>
+
+<Callout variant="corollary" title="Consequence of the Mean Value Theorem">
+  If $f'(x) = 0$ for all $x$ in an interval $(a, b)$, then $f$ is constant on $(a, b)$.
+  
+  <Callout variant="intuition">
+    If the derivative is always zero, the function has no rate of change, hence it must be flat (constant).
+  </Callout>
+</Callout>
+
+<Callout variant="proposition">
+  Every finite dimensional vector space over a field $F$ is isomorphic to $F^n$ for some $n \in \mathbb{N}$.
+</Callout>
+
+<Callout variant="axiom" title="Axiom of Extensionality">
+  Two sets are equal if and only if they have the same elements:
+  
+  $$\forall A \forall B [\forall x (x \in A \iff x \in B) \implies A = B]$$
+</Callout>
+
+<Callout variant="conjecture" title="Goldbach's Conjecture">
+  Every even integer greater than 2 can be expressed as the sum of two primes.
+  
+  <Callout variant="example">
+    - $4 = 2 + 2$
+    - $6 = 3 + 3$
+    - $8 = 3 + 5$
+    - $10 = 3 + 7 = 5 + 5$
+  </Callout>
+</Callout>
+
+<Callout variant="notation">
+  In this text, we use the following notational conventions:
+  - $\mathbb{N}$ denotes the natural numbers ${0, 1, 2, ...}$
+  - $\mathbb{Z}$ denotes the integers
+  - $\mathbb{Q}$ denotes the rational numbers
+  - $\mathbb{R}$ denotes the real numbers
+  - $\mathbb{C}$ denotes the complex numbers
+</Callout>
+
+<Callout variant="recall" title="From Previous Chapter">
+  We previously defined a group as a set $G$ together with a binary operation $\cdot: G \times G \to G$ satisfying:
+  1. **Associativity**: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
+  2. **Identity**: $\exists e \in G$ such that $a \cdot e = e \cdot a = a$ for all $a \in G$
+  3. **Inverses**: For each $a \in G$, $\exists a^{-1} \in G$ such that $a \cdot a^{-1} = a^{-1} \cdot a = e$
+</Callout>
+
+<Callout variant="explanation" title="Why This Works">
+  The algorithm works because it maintains the invariant that at each step, the partial solution is optimal for the subproblem considered so far. This is the key insight behind dynamic programming.
+  
+  <Callout variant="intuition">
+    Think of it like building a pyramid: you can't place a block without having a solid foundation beneath it.
+  </Callout>
+</Callout>
+
+<Callout variant="example" title="Using React Hooks">
+  Here's a practical example of `useEffect` with cleanup:
+  
+  ```jsx
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log('Tick');
+    }, 1000);
+    
+    // Cleanup function
+    return () => clearInterval(timer);
+  }, []); // Empty dependency array
+  ```
+  
+  The cleanup function prevents memory leaks by clearing the interval when the component unmounts.
+</Callout>
+
+<Callout variant="exercise">
+  Prove that $\sqrt{2}$ is irrational.
+  
+  <Callout variant="answer" defaultOpen={false}>
+    By contradiction. Assume $\sqrt{2} = \frac{p}{q}$ where $p, q \in \mathbb{Z}$ and $\gcd(p, q) = 1$...
+  </Callout>
+</Callout>
+
+<Callout variant="problem" title="Challenge Problem">
+  Given a sorted array of integers, implement a function that finds all pairs of numbers that sum to a target value. Your solution should have O(n) time complexity.
+  
+  <Callout variant="solution" defaultOpen={false}>
+    Use the two-pointer technique:
+    
+    ```python
+    def find_pairs(arr, target):
+        pairs = []
+        left, right = 0, len(arr) - 1
+        
+        while left < right:
+            current_sum = arr[left] + arr[right]
+            if current_sum == target:
+                pairs.append((arr[left], arr[right]))
+                left += 1
+                right -= 1
+            elif current_sum < target:
+                left += 1
+            else:
+                right -= 1
+        
+        return pairs
+    ```
+    
+    Time complexity: O(n), Space complexity: O(1) excluding output
+  </Callout>
+</Callout>
+
+<Callout variant="summary" title="Key Takeaways">
+  In this section, we covered:
+  - ✅ All 25+ callout variants
+  - ✅ Nested callouts for complex content
+  - ✅ Callouts with code, math, and rich formatting
+  - ✅ Collapsible callouts with `defaultOpen={false}`
+  - ✅ Academic and mathematical callout patterns
+</Callout>
+
+## Images and Media
+
+### Basic Image
+
+![A beautiful landscape with mountains and a lake](./banner.png)
+
+### Controlled Image Size
+
+<div class="max-w-xs mx-auto">
+  ![Small centered image](./banner.png)
+</div>
+
+### Image Grid
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div>
+    ![Left image](./banner.png)
+  </div>
+  <div>
+    ![Right image](./banner.png)
+  </div>
+</div>
+
+### Image with Caption
+
+<figure>
+  ![Technical diagram](./banner.png)
+  <figcaption class="text-center text-sm text-muted-foreground mt-2">
+    Figure 1: Example technical diagram showing system architecture
+  </figcaption>
+</figure>
+
+## Icons
+
+Inline icons using Lucide via astro-icon: <Icon name="lucide:rocket" class="inline w-5 h-5" /> rocket, <Icon name="lucide:heart" class="inline w-5 h-5 text-red-500" /> heart, <Icon name="lucide:star" class="inline w-5 h-5 text-yellow-500" /> star, <Icon name="lucide:code-2" class="inline w-5 h-5 text-blue-500" /> code.
+
+Icon list with labels:
+
+<div class="space-y-2">
+  <div class="flex items-center gap-2">
+    <Icon name="lucide:check-circle" class="w-5 h-5 text-green-500" />
+    <span>Success state</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <Icon name="lucide:x-circle" class="w-5 h-5 text-red-500" />
+    <span>Error state</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <Icon name="lucide:alert-circle" class="w-5 h-5 text-yellow-500" />
+    <span>Warning state</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <Icon name="lucide:info" class="w-5 h-5 text-blue-500" />
+    <span>Info state</span>
+  </div>
+</div>
+
+## Horizontal Rules
+
+Content before the first rule.
+
+---
+
+Content between rules with different styles.
+
+***
+
+Content after the styled rule.
+
+## HTML Elements and Custom Styling
+
+### Custom Styled Containers
+
+<div class="bg-muted p-6 rounded-lg border">
+  <h4 class="text-lg font-semibold mb-2">Custom Container</h4>
+  <p class="text-muted-foreground">This is a custom styled container using Tailwind classes. It demonstrates how you can create custom layouts within your MDX content.</p>
+  
+  <div class="mt-4 grid grid-cols-2 gap-4">
+    <div class="bg-background p-3 rounded border">
+      <Icon name="lucide:package" class="w-8 h-8 mb-2 text-primary" />
+      <p class="text-sm">Feature One</p>
+    </div>
+    <div class="bg-background p-3 rounded border">
+      <Icon name="lucide:zap" class="w-8 h-8 mb-2 text-primary" />
+      <p class="text-sm">Feature Two</p>
+    </div>
+  </div>
+</div>
+
+### Details/Summary Elements
+
+<details>
+  <summary class="cursor-pointer font-semibold">Click to expand basic details</summary>
+  <div class="mt-2 pl-4 border-l-2 border-muted">
+    <p>Hidden content that appears when you click the summary!</p>
+    <p>You can include any content here, including code:</p>
+    
+    ```js
+    console.log('Hidden code example');
+    ```
+  </div>
+</details>
+
+<details>
+  <summary class="cursor-pointer font-semibold">Advanced expandable section</summary>
+  <div class="mt-2 pl-4 border-l-2 border-muted">
+    <Callout variant="note">
+      Even callouts work inside details elements!
+    </Callout>
+    
+    And tables too:
+    
+    | Column 1 | Column 2 |
+    |----------|----------|
+    | Data 1   | Data 2   |
+  </div>
+</details>
+
+## Complex Layouts
+
+### Card Grid
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="border rounded-lg p-4 hover:shadow-lg transition-shadow">
+    <Icon name="lucide:layers" class="w-8 h-8 mb-2 text-primary" />
+    <h4 class="font-semibold">Component Based</h4>
+    <p class="text-sm text-muted-foreground">Build with reusable MDX components</p>
+  </div>
+  <div class="border rounded-lg p-4 hover:shadow-lg transition-shadow">
+    <Icon name="lucide:palette" class="w-8 h-8 mb-2 text-primary" />
+    <h4 class="font-semibold">Fully Themed</h4>
+    <p class="text-sm text-muted-foreground">Automatic dark mode support</p>
+  </div>
+  <div class="border rounded-lg p-4 hover:shadow-lg transition-shadow">
+    <Icon name="lucide:zap" class="w-8 h-8 mb-2 text-primary" />
+    <h4 class="font-semibold">Lightning Fast</h4>
+    <p class="text-sm text-muted-foreground">Optimized for performance</p>
+  </div>
+</div>
+
+### Two-Column Layout
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div>
+    <h4 class="font-semibold mb-2">Left Column</h4>
+    <p>This demonstrates a two-column layout that's responsive. On mobile devices, these columns stack vertically.</p>
+    
+    <Callout variant="tip">
+      Columns are great for comparing information side-by-side.
+    </Callout>
+  </div>
+  <div>
+    <h4 class="font-semibold mb-2">Right Column</h4>
+    <p>The second column can contain different content types, maintaining visual balance.</p>
+    
+    ```js
+    // Code in the second column
+    const column = 2;
+    ```
+  </div>
+</div>
+
+### Styled Links Section
+
+<div class="prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-a:font-medium">
+  This paragraph has custom link styling. Check out [this internal link](#) and [this external link](https://example.com) to see the custom styles in action. The links have custom colors and hover effects.
+</div>
+
+## Advanced MDX Features
+
+### Component Composition
+
+<div class="space-y-4">
+  <Callout variant="note" title="Nested Components">
+    MDX allows you to nest components within each other:
+    
+    <div class="bg-muted p-4 rounded mt-2">
+      <Icon name="lucide:info" class="inline w-4 h-4 mr-1" />
+      This is a styled div inside a callout!
+      
+      ```js
+      // Even code blocks work here
+      const nested = true;
+      ```
+    </div>
+  </Callout>
+</div>
+
+### Dynamic Content
+
+<div class="border rounded p-4">
+  <h4 class="font-semibold mb-2">Feature Comparison</h4>
+  
+  <div class="space-y-2">
+    {['TypeScript Support', 'Hot Module Replacement', 'SEO Optimized', 'Mobile Responsive'].map((feature) => (
+      <div class="flex items-center gap-2">
+        <Icon name="lucide:check" class="w-4 h-4 text-green-500" />
+        <span>{feature}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+## Navigation Features
+
+This blog includes several navigation features that enhance the user experience:
+
+1. **Table of Contents** - Automatically generated from headings with scroll-tracking (see it in action on the left!)
+2. **Breadcrumbs** - Shows your location in the site hierarchy (look at the top of this page)
+3. **Post Navigation** - Previous/Next links between posts (check the bottom of this page)
+4. **Mobile Navigation** - Sticky header with progress indicator (resize to mobile to see it)
+5. **Tag System** - Posts organized by tags with dedicated pages
+6. **Author System** - Multiple authors with profile pages
+7. **Subpost System** - Hierarchical content organization (see the subposts of this kitchen sink!)
+
+## Frontmatter Features
+
+This post demonstrates various frontmatter options:
+
+- `title` - The post title
+- `description` - SEO meta description
+- `date` - Publication date (used for sorting)
+- `tags` - Array of tags for categorization
+- `image` - Featured image for Open Graph
+- `authors` - Array of author IDs
+- `draft` - Draft status (won't be published if true)
+
+## Subpost Feature Demo
+
+This kitchen sink post has three subposts that dive deeper into specific features:
+
+1. **Code Highlighting** - Exhaustive examples of every code block feature
+2. **MDX Components** - All component patterns and layouts
+3. **Callout Examples** - Every callout variant with use cases
+
+On desktop, you'll see the subpost navigation on the right side of the page. On mobile, it appears as a sticky header below the main navigation.
+
+## Final Thoughts
+
+This kitchen sink has demonstrated every feature available in this blog system:
+
+- ✅ All text formatting options
+- ✅ Complete heading hierarchy  
+- ✅ Every type of list
+- ✅ Blockquotes with citations
+- ✅ Simple and complex tables
+- ✅ 15+ code block variations with visual explanations
+- ✅ All 25+ callout variants
+- ✅ Mathematics with LaTeX
+- ✅ Images and media handling
+- ✅ Icons and visual elements
+- ✅ Custom HTML layouts
+- ✅ Advanced MDX composition
+- ✅ Navigation features
+- ✅ Subpost system
+- ✅ And much more!
+
+<Callout variant="summary" title="Using This Reference">
+  Bookmark this page and refer to it whenever you need to:
+  - Look up syntax for a specific feature
+  - Copy example code blocks
+  - Test if a feature is working correctly
+  - Show others the capabilities of this blog system
+  
+  **Pro tip**: Check out the subposts for even more detailed examples of specific features!
+</Callout>
+
+---
+
+*This kitchen sink is a living document and will be updated as new features are added to the blog system.*

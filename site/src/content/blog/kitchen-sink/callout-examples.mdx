@@ -1,0 +1,500 @@
+---
+title: 'Complete Callout Component Reference'
+description: 'All 25+ callout variants with practical examples and use cases'
+date: 2025-08-09
+tags: ['demo', 'callouts', 'components']
+authors: ['ryanbarnett']
+order: 3
+draft: false
+---
+
+import Callout from '@/components/Callout.astro'
+
+This subpost provides a complete reference for all callout variants with practical examples and use cases for each one.
+
+## General Purpose Callouts
+
+These are the most commonly used callout variants for general content:
+
+### Note
+
+<Callout variant="note">
+  **Default variant** - When no variant is specified, this is what you get. Perfect for supplementary information that enhances the main content.
+</Callout>
+
+<Callout variant="note" title="Custom Title Example">
+  You can add a custom title to any callout variant. This helps provide context for the note content.
+</Callout>
+
+### Tip
+
+<Callout variant="tip">
+  Use the tip variant for helpful suggestions, best practices, or time-saving shortcuts that readers will appreciate.
+</Callout>
+
+<Callout variant="tip" title="Keyboard Shortcut">
+  Press <kbd>Cmd</kbd> + <kbd>K</kbd> (Mac) or <kbd>Ctrl</kbd> + <kbd>K</kbd> (Windows) to quickly open the search dialog in most modern applications.
+</Callout>
+
+### Warning
+
+<Callout variant="warning">
+  The warning variant alerts users to potential issues or things they should be careful about. Use it for non-critical concerns.
+</Callout>
+
+<Callout variant="warning" title="Deprecation Notice">
+  The `oldMethod()` function will be deprecated in v3.0. Please migrate to `newMethod()` to ensure compatibility with future versions.
+  
+  ```js
+  // Old way (deprecated)
+  api.oldMethod(data);
+  
+  // New way (recommended)
+  api.newMethod(data);
+  ```
+</Callout>
+
+### Danger
+
+<Callout variant="danger">
+  Reserve the danger variant for critical warnings about destructive operations, security risks, or irreversible actions.
+</Callout>
+
+<Callout variant="danger" title="Irreversible Action">
+  **This will permanently delete your database!**
+  
+  Once executed, this action cannot be undone. Make sure you have:
+  - ✅ Created a recent backup
+  - ✅ Verified the backup is restorable
+  - ✅ Confirmed this is the intended action
+</Callout>
+
+### Important
+
+<Callout variant="important">
+  The important variant highlights critical information that users must understand or act upon.
+</Callout>
+
+<Callout variant="important" title="Required Configuration">
+  You must set these environment variables before running the application:
+  
+  ```bash
+  DATABASE_URL=postgresql://user:password@host:5432/db
+  API_KEY=your-secret-api-key
+  NODE_ENV=production
+  ```
+  
+  Without these variables, the application will fail to start.
+</Callout>
+
+## Academic and Mathematical Callouts
+
+These variants are designed for educational content, documentation, and technical writing:
+
+### Definition
+
+<Callout variant="definition">
+  A **binary search tree** (BST) is a hierarchical data structure in which each node has at most two children, referred to as the left child and right child.
+</Callout>
+
+<Callout variant="definition" title="Big O Notation">
+  **Big O notation** describes the upper bound of an algorithm's time or space complexity in the worst-case scenario. For example:
+  - O(1) - Constant time
+  - O(log n) - Logarithmic time
+  - O(n) - Linear time
+  - O(n²) - Quadratic time
+</Callout>
+
+### Theorem
+
+<Callout variant="theorem" title="Pythagorean Theorem">
+  In a right-angled triangle, the square of the length of the hypotenuse (c) equals the sum of squares of the lengths of the other two sides (a and b).
+  
+  $$c^2 = a^2 + b^2$$
+</Callout>
+
+<Callout variant="theorem" title="Central Limit Theorem">
+  Given a sufficiently large sample size from a population with finite variance, the sample mean will be approximately normally distributed, regardless of the population's distribution.
+  
+  <Callout variant="proof">
+    Let $X_1, X_2, ..., X_n$ be independent random variables with mean $\mu$ and variance $\sigma^2$. Define:
+    
+    $$Z_n = \frac{\sqrt{n}(\bar{X}_n - \mu)}{\sigma}$$
+    
+    Then as $n \to \infty$, $Z_n$ converges in distribution to $N(0, 1)$.
+  </Callout>
+</Callout>
+
+### Lemma
+
+<Callout variant="lemma">
+  If a function $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$, then there exists at least one $c \in (a, b)$ such that $f'(c) = \frac{f(b) - f(a)}{b - a}$.
+</Callout>
+
+<Callout variant="lemma" title="Pumping Lemma for Regular Languages">
+  For any regular language $L$, there exists a constant $p$ (pumping length) such that any string $w \in L$ with $|w| \geq p$ can be divided into three parts $w = xyz$ satisfying:
+  1. $|y| > 0$
+  2. $|xy| \leq p$
+  3. For all $i \geq 0$, $xy^iz \in L$
+</Callout>
+
+### Proof
+
+<Callout variant="proof">
+  We'll prove that $\sqrt{2}$ is irrational by contradiction.
+  
+  Assume $\sqrt{2} = \frac{p}{q}$ where $p, q \in \mathbb{Z}$ and $\gcd(p, q) = 1$.
+  
+  Then $2 = \frac{p^2}{q^2}$, so $p^2 = 2q^2$.
+  
+  This means $p^2$ is even, therefore $p$ is even. Let $p = 2k$.
+  
+  Substituting: $(2k)^2 = 2q^2 \Rightarrow 4k^2 = 2q^2 \Rightarrow 2k^2 = q^2$
+  
+  So $q^2$ is even, therefore $q$ is even.
+  
+  But if both $p$ and $q$ are even, then $\gcd(p, q) \geq 2$, contradicting our assumption. □
+</Callout>
+
+### Corollary
+
+<Callout variant="corollary">
+  Since every differentiable function is continuous, any function that is differentiable on $[a, b]$ satisfies the conditions of the Mean Value Theorem.
+</Callout>
+
+<Callout variant="corollary" title="From Fermat's Little Theorem">
+  If $p$ is prime and $a$ is not divisible by $p$, then $a^{p-1} \equiv 1 \pmod{p}$.
+  
+  **Corollary**: For any integer $a$ and prime $p$, we have $a^p \equiv a \pmod{p}$.
+</Callout>
+
+### Proposition
+
+<Callout variant="proposition">
+  Every finite group of prime order is cyclic.
+</Callout>
+
+<Callout variant="proposition" title="Properties of Determinants">
+  For any $n \times n$ matrices $A$ and $B$:
+  1. $\det(AB) = \det(A) \cdot \det(B)$
+  2. $\det(A^T) = \det(A)$
+  3. If $A$ is invertible, $\det(A^{-1}) = \frac{1}{\det(A)}$
+</Callout>
+
+### Axiom
+
+<Callout variant="axiom">
+  **Axiom of Choice**: For any collection of non-empty sets, there exists a choice function that selects one element from each set.
+</Callout>
+
+<Callout variant="axiom" title="Peano Axioms">
+  The natural numbers are defined by:
+  1. 0 is a natural number
+  2. Every natural number has a successor
+  3. 0 is not the successor of any natural number
+  4. Different natural numbers have different successors
+  5. (Induction) If a property holds for 0 and holds for n+1 whenever it holds for n, then it holds for all natural numbers
+</Callout>
+
+### Conjecture
+
+<Callout variant="conjecture">
+  **P vs NP**: It is conjectured that P ≠ NP, meaning there exist problems whose solutions can be verified quickly but cannot be found quickly.
+</Callout>
+
+<Callout variant="conjecture" title="Collatz Conjecture">
+  For any positive integer $n$, repeatedly apply:
+  - If $n$ is even: $n \to n/2$
+  - If $n$ is odd: $n \to 3n + 1$
+  
+  The conjecture states that this process always reaches 1.
+  
+  <Callout variant="example">
+    Starting with $n = 7$:
+    $7 \to 22 \to 11 \to 34 \to 17 \to 52 \to 26 \to 13 \to 40 \to 20 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1$
+  </Callout>
+</Callout>
+
+### Notation
+
+<Callout variant="notation">
+  Throughout this document:
+  - $\mathbb{N}$ = Natural numbers
+  - $\mathbb{Z}$ = Integers
+  - $\mathbb{Q}$ = Rational numbers
+  - $\mathbb{R}$ = Real numbers
+  - $\mathbb{C}$ = Complex numbers
+</Callout>
+
+<Callout variant="notation" title="Algorithm Complexity Notation">
+  - $O(f(n))$ - Upper bound (worst case)
+  - $\Omega(f(n))$ - Lower bound (best case)
+  - $\Theta(f(n))$ - Tight bound (exact)
+  - $o(f(n))$ - Strict upper bound
+  - $\omega(f(n))$ - Strict lower bound
+</Callout>
+
+### Remark
+
+<Callout variant="remark">
+  While the proof above is correct, a more elegant approach uses the Fundamental Theorem of Arithmetic directly.
+</Callout>
+
+<Callout variant="remark" title="Implementation Note">
+  Although the theoretical complexity is O(n log n), in practice, the constant factors make this algorithm slower than the O(n²) alternative for n < 1000.
+</Callout>
+
+### Intuition
+
+<Callout variant="intuition">
+  Think of recursion like Russian nesting dolls - each doll contains a smaller version of itself until you reach the smallest doll (base case).
+</Callout>
+
+<Callout variant="intuition" title="Why Quicksort is Fast">
+  Quicksort's efficiency comes from its divide-and-conquer approach: by partitioning around a pivot, we ensure that each element is compared to the pivot only once per level of recursion. With good pivot selection, we get log n levels, giving us O(n log n) average performance.
+</Callout>
+
+### Recall
+
+<Callout variant="recall">
+  In Chapter 3, we defined a **heap** as a complete binary tree where each parent node's value is greater than or equal to its children's values (max-heap).
+</Callout>
+
+<Callout variant="recall" title="From Previous Lecture">
+  We showed that:
+  1. DFS uses O(h) space where h is the maximum depth
+  2. BFS uses O(w) space where w is the maximum width
+  3. For a balanced tree, h = O(log n) and w = O(n)
+  
+  Therefore, DFS is more space-efficient for balanced trees.
+</Callout>
+
+### Explanation
+
+<Callout variant="explanation">
+  The `volatile` keyword in Java prevents compiler optimizations that might cache the variable's value. This ensures that every read gets the latest value from main memory, which is crucial for multi-threaded applications.
+</Callout>
+
+<Callout variant="explanation" title="Why Immutability Matters">
+  Immutable objects provide several benefits:
+  
+  1. **Thread Safety** - No synchronization needed
+  2. **Caching** - Hash codes can be cached
+  3. **Simplicity** - No defensive copying required
+  4. **Debugging** - State never changes unexpectedly
+  
+  ```js
+  // Mutable (problematic)
+  const user = { name: 'Alice' };
+  updateUser(user);  // What happened to user?
+  
+  // Immutable (clear)
+  const user = { name: 'Alice' };
+  const updatedUser = updateUser(user);  // Original unchanged
+  ```
+</Callout>
+
+### Example
+
+<Callout variant="example">
+  Here's how to implement a singleton pattern in TypeScript:
+  
+  ```typescript
+  class Singleton {
+    private static instance: Singleton;
+    
+    private constructor() {}
+    
+    public static getInstance(): Singleton {
+      if (!Singleton.instance) {
+        Singleton.instance = new Singleton();
+      }
+      return Singleton.instance;
+    }
+  }
+  ```
+</Callout>
+
+<Callout variant="example" title="Real-World Use Case">
+  **Caching API Responses**
+  
+  ```javascript
+  const cache = new Map();
+  
+  async function fetchUser(id) {
+    // Check cache first
+    if (cache.has(id)) {
+      console.log('Cache hit!');
+      return cache.get(id);
+    }
+    
+    // Cache miss - fetch from API
+    console.log('Cache miss - fetching...');
+    const user = await api.getUser(id);
+    cache.set(id, user);
+    return user;
+  }
+  ```
+  
+  This reduces API calls and improves response times for frequently accessed data.
+</Callout>
+
+### Exercise
+
+<Callout variant="exercise">
+  Implement a function that checks if a binary tree is balanced. A balanced tree is one where the heights of any node's two subtrees differ by at most 1.
+  
+  <Callout variant="answer" defaultOpen={false}>
+    ```javascript
+    function isBalanced(root) {
+      function checkHeight(node) {
+        if (!node) return 0;
+        
+        const leftHeight = checkHeight(node.left);
+        if (leftHeight === -1) return -1;
+        
+        const rightHeight = checkHeight(node.right);
+        if (rightHeight === -1) return -1;
+        
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+          return -1;
+        }
+        
+        return Math.max(leftHeight, rightHeight) + 1;
+      }
+      
+      return checkHeight(root) !== -1;
+    }
+    ```
+  </Callout>
+</Callout>
+
+### Problem
+
+<Callout variant="problem" title="Dynamic Programming Challenge">
+  Given a string s and a dictionary of words, determine if s can be segmented into a space-separated sequence of dictionary words.
+  
+  **Example:**
+  - Input: s = "leetcode", wordDict = ["leet", "code"]
+  - Output: true
+  
+  **Constraints:**
+  - 1 ≤ s.length ≤ 300
+  - 1 ≤ wordDict.length ≤ 1000
+  
+  <Callout variant="solution" defaultOpen={false}>
+    **Approach**: Use dynamic programming with a boolean array.
+    
+    ```python
+    def wordBreak(s, wordDict):
+        n = len(s)
+        dp = [False] * (n + 1)
+        dp[0] = True  # Empty string
+        
+        for i in range(1, n + 1):
+            for j in range(i):
+                if dp[j] and s[j:i] in wordDict:
+                    dp[i] = True
+                    break
+        
+        return dp[n]
+    ```
+    
+    **Time Complexity**: O(n²) where n is the length of string s
+    **Space Complexity**: O(n) for the dp array
+  </Callout>
+</Callout>
+
+### Answer
+
+<Callout variant="answer">
+  The time complexity of merge sort is **O(n log n)** in all cases (best, average, and worst).
+</Callout>
+
+<Callout variant="answer" title="Quiz Solution">
+  1. **True** - A complete binary tree of height h has between 2^h and 2^(h+1) - 1 nodes
+  2. **False** - Hash tables have O(1) average case, but O(n) worst case
+  3. **True** - Every AVL tree is a binary search tree with height-balancing property
+</Callout>
+
+### Solution
+
+<Callout variant="solution">
+  To reverse a linked list iteratively:
+  
+  ```python
+  def reverseList(head):
+      prev = None
+      current = head
+      
+      while current:
+          next_node = current.next  # Save next
+          current.next = prev       # Reverse pointer
+          prev = current           # Move prev forward
+          current = next_node      # Move current forward
+      
+      return prev  # New head
+  ```
+  
+  **Explanation**: We maintain three pointers and reverse links one by one.
+</Callout>
+
+### Summary
+
+<Callout variant="summary" title="Callout Usage Guidelines">
+  - **General Purpose**: note, tip, warning, danger, important
+  - **Academic**: definition, theorem, lemma, proof, corollary, proposition, axiom, conjecture
+  - **Educational**: notation, remark, intuition, recall, explanation
+  - **Interactive**: example, exercise, problem, answer, solution
+  - **Overview**: summary
+  
+  Each variant has a specific purpose and visual style to help organize and present information effectively.
+</Callout>
+
+## Advanced Usage
+
+### Nested Callouts
+
+<Callout variant="theorem" title="Master Theorem">
+  For recurrences of the form $T(n) = aT(n/b) + f(n)$ where $a \geq 1$, $b > 1$:
+  
+  <Callout variant="explanation">
+    The Master Theorem provides a cookbook method for solving common divide-and-conquer recurrences.
+  </Callout>
+  
+  1. If $f(n) = O(n^{\log_b a - \epsilon})$ for some $\epsilon > 0$, then $T(n) = \Theta(n^{\log_b a})$
+  2. If $f(n) = \Theta(n^{\log_b a})$, then $T(n) = \Theta(n^{\log_b a} \log n)$
+  3. If $f(n) = \Omega(n^{\log_b a + \epsilon})$ for some $\epsilon > 0$, and $af(n/b) \leq cf(n)$ for some $c < 1$, then $T(n) = \Theta(f(n))$
+  
+  <Callout variant="example">
+    For merge sort: $T(n) = 2T(n/2) + O(n)$
+    - $a = 2, b = 2$, so $\log_b a = 1$
+    - $f(n) = O(n) = O(n^1)$
+    - Case 2 applies: $T(n) = \Theta(n \log n)$
+  </Callout>
+</Callout>
+
+### Collapsible Callouts
+
+<Callout variant="exercise">
+  Write a function to find the longest common subsequence (LCS) of two strings.
+  
+  <Callout variant="answer" defaultOpen={false}>
+    ```python
+    def lcs(text1, text2):
+        m, n = len(text1), len(text2)
+        dp = [[0] * (n + 1) for _ in range(m + 1)]
+        
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                if text1[i-1] == text2[j-1]:
+                    dp[i][j] = dp[i-1][j-1] + 1
+                else:
+                    dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+        
+        return dp[m][n]
+    ```
+  </Callout>
+</Callout>
+
+This comprehensive guide covers all 25+ callout variants with practical examples. Use these as a reference when creating your own content!

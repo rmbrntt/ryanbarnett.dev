@@ -1,0 +1,365 @@
+---
+title: 'MDX Components and Layouts'
+description: 'Explore all the MDX components, custom layouts, and advanced composition patterns available'
+date: 2025-08-09
+tags: ['demo', 'mdx', 'components']
+authors: ['ryanbarnett']
+order: 2
+draft: false
+---
+
+import Callout from '@/components/Callout.astro'
+import { Icon } from 'astro-icon/components'
+
+This subpost demonstrates all the MDX component capabilities and advanced layout patterns you can use in your blog posts.
+
+## Component Imports
+
+MDX allows you to import and use any Astro or React component:
+
+```mdx
+import Callout from '@/components/Callout.astro'
+import { Icon } from 'astro-icon/components'
+import CustomComponent from '@/components/CustomComponent.astro'
+```
+
+## Icon Components
+
+The blog includes the complete Lucide icon set via astro-icon:
+
+### Basic Icons
+
+<div class="flex flex-wrap gap-4 items-center">
+  <Icon name="lucide:home" class="w-6 h-6" />
+  <Icon name="lucide:user" class="w-6 h-6" />
+  <Icon name="lucide:settings" class="w-6 h-6" />
+  <Icon name="lucide:search" class="w-6 h-6" />
+  <Icon name="lucide:menu" class="w-6 h-6" />
+</div>
+
+### Colored Icons
+
+<div class="flex flex-wrap gap-4 items-center">
+  <Icon name="lucide:heart" class="w-6 h-6 text-red-500" />
+  <Icon name="lucide:star" class="w-6 h-6 text-yellow-500" />
+  <Icon name="lucide:check-circle" class="w-6 h-6 text-green-500" />
+  <Icon name="lucide:alert-circle" class="w-6 h-6 text-orange-500" />
+  <Icon name="lucide:info" class="w-6 h-6 text-blue-500" />
+</div>
+
+### Icon Sizes
+
+<div class="flex flex-wrap gap-4 items-center">
+  <Icon name="lucide:package" class="w-4 h-4" />
+  <Icon name="lucide:package" class="w-6 h-6" />
+  <Icon name="lucide:package" class="w-8 h-8" />
+  <Icon name="lucide:package" class="w-10 h-10" />
+  <Icon name="lucide:package" class="w-12 h-12" />
+</div>
+
+## Custom Layouts
+
+### Card Layout
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div class="bg-card p-6 rounded-lg border shadow-sm hover:shadow-md transition-shadow">
+    <Icon name="lucide:cpu" class="w-10 h-10 text-primary mb-3" />
+    <h3 class="font-semibold text-lg mb-2">Performance</h3>
+    <p class="text-sm text-muted-foreground">Optimized for speed with static generation and minimal JavaScript.</p>
+  </div>
+  <div class="bg-card p-6 rounded-lg border shadow-sm hover:shadow-md transition-shadow">
+    <Icon name="lucide:brush" class="w-10 h-10 text-primary mb-3" />
+    <h3 class="font-semibold text-lg mb-2">Customizable</h3>
+    <p class="text-sm text-muted-foreground">Tailwind CSS and shadcn/ui for complete design control.</p>
+  </div>
+  <div class="bg-card p-6 rounded-lg border shadow-sm hover:shadow-md transition-shadow">
+    <Icon name="lucide:code-2" class="w-10 h-10 text-primary mb-3" />
+    <h3 class="font-semibold text-lg mb-2">Developer Friendly</h3>
+    <p class="text-sm text-muted-foreground">TypeScript, MDX, and modern tooling for great DX.</p>
+  </div>
+</div>
+
+### Feature List with Icons
+
+<div class="space-y-3">
+  <div class="flex items-start gap-3">
+    <Icon name="lucide:check" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+    <div>
+      <h4 class="font-semibold">Full TypeScript Support</h4>
+      <p class="text-sm text-muted-foreground">End-to-end type safety with TypeScript throughout the codebase.</p>
+    </div>
+  </div>
+  <div class="flex items-start gap-3">
+    <Icon name="lucide:check" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+    <div>
+      <h4 class="font-semibold">SEO Optimized</h4>
+      <p class="text-sm text-muted-foreground">Built-in sitemap, RSS feed, and Open Graph tags.</p>
+    </div>
+  </div>
+  <div class="flex items-start gap-3">
+    <Icon name="lucide:check" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+    <div>
+      <h4 class="font-semibold">Dark Mode</h4>
+      <p class="text-sm text-muted-foreground">Automatic theme switching with system preference detection.</p>
+    </div>
+  </div>
+</div>
+
+### Timeline Layout
+
+<div class="space-y-6 relative before:absolute before:left-2 before:top-3 before:h-[calc(100%-24px)] before:w-px before:bg-border">
+  <div class="flex gap-4">
+    <div class="w-4 h-4 rounded-full bg-primary flex-shrink-0 mt-1 relative z-10"></div>
+    <div>
+      <h4 class="font-semibold">Project Started</h4>
+      <p class="text-sm text-muted-foreground">Initial commit and basic structure</p>
+      <time class="text-xs text-muted-foreground">January 2024</time>
+    </div>
+  </div>
+  <div class="flex gap-4">
+    <div class="w-4 h-4 rounded-full bg-primary flex-shrink-0 mt-1 relative z-10"></div>
+    <div>
+      <h4 class="font-semibold">MDX Integration</h4>
+      <p class="text-sm text-muted-foreground">Added MDX support and component system</p>
+      <time class="text-xs text-muted-foreground">February 2024</time>
+    </div>
+  </div>
+  <div class="flex gap-4">
+    <div class="w-4 h-4 rounded-full bg-primary flex-shrink-0 mt-1 relative z-10"></div>
+    <div>
+      <h4 class="font-semibold">Feature Complete</h4>
+      <p class="text-sm text-muted-foreground">All major features implemented</p>
+      <time class="text-xs text-muted-foreground">March 2024</time>
+    </div>
+  </div>
+</div>
+
+## Interactive Elements
+
+### Expandable Sections
+
+<details class="group">
+  <summary class="cursor-pointer list-none flex items-center gap-2 font-semibold">
+    <Icon name="lucide:chevron-right" class="w-4 h-4 transition-transform group-open:rotate-90" />
+    Click to expand more information
+  </summary>
+  <div class="mt-3 pl-6 space-y-2">
+    <p>This content is hidden by default and revealed when clicked.</p>
+    <p>You can include any MDX content here:</p>
+    <ul class="list-disc list-inside">
+      <li>Lists</li>
+      <li>Code blocks</li>
+      <li>Even other components</li>
+    </ul>
+  </div>
+</details>
+
+<details class="group mt-4">
+  <summary class="cursor-pointer list-none flex items-center gap-2 font-semibold">
+    <Icon name="lucide:chevron-right" class="w-4 h-4 transition-transform group-open:rotate-90" />
+    Advanced example with code
+  </summary>
+  <div class="mt-3 pl-6">
+    <Callout variant="note">
+      This expandable section contains a callout!
+    </Callout>
+    
+    ```js
+    // And even code blocks
+    console.log('Hidden code example');
+    ```
+  </div>
+</details>
+
+### Tabs Simulation
+
+<div class="border rounded-lg overflow-hidden">
+  <div class="flex border-b">
+    <button class="px-4 py-2 bg-primary text-primary-foreground font-medium">Tab 1</button>
+    <button class="px-4 py-2 hover:bg-muted">Tab 2</button>
+    <button class="px-4 py-2 hover:bg-muted">Tab 3</button>
+  </div>
+  <div class="p-4">
+    <p>Content for Tab 1 is shown here. In a real implementation, you'd use React state to switch between tabs.</p>
+  </div>
+</div>
+
+## Styled Containers
+
+### Alert Box
+
+<div class="bg-yellow-50 dark:bg-yellow-950/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
+  <div class="flex gap-3">
+    <Icon name="lucide:alert-triangle" class="w-5 h-5 text-yellow-600 dark:text-yellow-500 flex-shrink-0 mt-0.5" />
+    <div>
+      <h4 class="font-semibold text-yellow-800 dark:text-yellow-200">Warning</h4>
+      <p class="text-sm text-yellow-700 dark:text-yellow-300 mt-1">This is a custom alert box created with Tailwind classes.</p>
+    </div>
+  </div>
+</div>
+
+### Info Box
+
+<div class="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mt-4">
+  <div class="flex gap-3">
+    <Icon name="lucide:info" class="w-5 h-5 text-blue-600 dark:text-blue-500 flex-shrink-0 mt-0.5" />
+    <div>
+      <h4 class="font-semibold text-blue-800 dark:text-blue-200">Information</h4>
+      <p class="text-sm text-blue-700 dark:text-blue-300 mt-1">Useful information displayed in a custom styled container.</p>
+    </div>
+  </div>
+</div>
+
+### Success Box
+
+<div class="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg p-4 mt-4">
+  <div class="flex gap-3">
+    <Icon name="lucide:check-circle" class="w-5 h-5 text-green-600 dark:text-green-500 flex-shrink-0 mt-0.5" />
+    <div>
+      <h4 class="font-semibold text-green-800 dark:text-green-200">Success</h4>
+      <p class="text-sm text-green-700 dark:text-green-300 mt-1">Operation completed successfully!</p>
+    </div>
+  </div>
+</div>
+
+## Complex Component Composition
+
+### Nested Components
+
+<Callout variant="tip" title="Component Composition">
+  You can nest components within each other for complex layouts:
+  
+  <div class="grid grid-cols-2 gap-4 mt-4">
+    <div class="bg-muted p-3 rounded">
+      <Icon name="lucide:layers" class="w-6 h-6 mb-2" />
+      <p class="text-sm">Nested grid item 1</p>
+    </div>
+    <div class="bg-muted p-3 rounded">
+      <Icon name="lucide:package" class="w-6 h-6 mb-2" />
+      <p class="text-sm">Nested grid item 2</p>
+    </div>
+  </div>
+  
+  Even code works inside:
+  ```js
+  const nested = true;
+  ```
+</Callout>
+
+### Data Visualization
+
+<div class="space-y-4">
+  <div>
+    <div class="flex justify-between text-sm mb-1">
+      <span>Progress</span>
+      <span>75%</span>
+    </div>
+    <div class="h-2 bg-muted rounded-full overflow-hidden">
+      <div class="h-full bg-primary rounded-full" style="width: 75%"></div>
+    </div>
+  </div>
+  
+  <div>
+    <div class="flex justify-between text-sm mb-1">
+      <span>Completion</span>
+      <span>45%</span>
+    </div>
+    <div class="h-2 bg-muted rounded-full overflow-hidden">
+      <div class="h-full bg-green-500 rounded-full" style="width: 45%"></div>
+    </div>
+  </div>
+  
+  <div>
+    <div class="flex justify-between text-sm mb-1">
+      <span>Performance</span>
+      <span>90%</span>
+    </div>
+    <div class="h-2 bg-muted rounded-full overflow-hidden">
+      <div class="h-full bg-blue-500 rounded-full" style="width: 90%"></div>
+    </div>
+  </div>
+</div>
+
+## Responsive Design Patterns
+
+### Responsive Grid
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="bg-muted p-4 rounded text-center">
+    <div class="text-2xl font-bold">42</div>
+    <div class="text-sm text-muted-foreground">Total Posts</div>
+  </div>
+  <div class="bg-muted p-4 rounded text-center">
+    <div class="text-2xl font-bold">128</div>
+    <div class="text-sm text-muted-foreground">Components</div>
+  </div>
+  <div class="bg-muted p-4 rounded text-center">
+    <div class="text-2xl font-bold">15k</div>
+    <div class="text-sm text-muted-foreground">Lines of Code</div>
+  </div>
+  <div class="bg-muted p-4 rounded text-center">
+    <div class="text-2xl font-bold">98</div>
+    <div class="text-sm text-muted-foreground">Lighthouse Score</div>
+  </div>
+</div>
+
+### Mobile-First Design
+
+<div class="text-center p-8 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg">
+  <Icon name="lucide:smartphone" class="w-12 h-12 mx-auto mb-4 text-primary" />
+  <h3 class="text-xl font-semibold mb-2">Mobile Responsive</h3>
+  <p class="text-muted-foreground max-w-md mx-auto">
+    Every component is designed with mobile-first principles. Resize your browser to see responsive behavior in action.
+  </p>
+</div>
+
+## Advanced Patterns
+
+### Component with Props
+
+While you can't pass props directly in MDX, you can create variations:
+
+<div class="space-y-2">
+  {['primary', 'secondary', 'destructive'].map(variant => (
+    <button 
+      class={`px-4 py-2 rounded font-medium ${
+        variant === 'primary' ? 'bg-primary text-primary-foreground' :
+        variant === 'secondary' ? 'bg-secondary text-secondary-foreground' :
+        'bg-destructive text-destructive-foreground'
+      }`}
+    >
+      {variant.charAt(0).toUpperCase() + variant.slice(1)} Button
+    </button>
+  ))}
+</div>
+
+### Dynamic Lists
+
+<div class="divide-y">
+  {[
+    { icon: 'lucide:git-branch', title: 'Version Control', desc: 'Git-based workflow' },
+    { icon: 'lucide:shield', title: 'Security', desc: 'Secure by default' },
+    { icon: 'lucide:zap', title: 'Performance', desc: 'Lightning fast' },
+    { icon: 'lucide:palette', title: 'Theming', desc: 'Full customization' },
+  ].map(item => (
+    <div class="py-3 flex items-start gap-3">
+      <Icon name={item.icon} class="w-5 h-5 text-primary mt-0.5" />
+      <div>
+        <h4 class="font-medium">{item.title}</h4>
+        <p class="text-sm text-muted-foreground">{item.desc}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Best Practices
+
+<Callout variant="tip" title="MDX Component Tips">
+  1. **Import once** - Import components at the top of your MDX file
+  2. **Use semantic HTML** - Maintain accessibility with proper HTML elements
+  3. **Responsive by default** - Always consider mobile layouts
+  4. **Dark mode support** - Use Tailwind's dark: variants
+  5. **Performance** - Avoid heavy JavaScript in MDX components
+</Callout>
+
+This guide demonstrates the flexibility and power of MDX components in your blog posts. Combine these patterns to create rich, interactive content!
