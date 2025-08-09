@@ -1,87 +1,231 @@
 ---
-import BlogCard from '@/components/BlogCard.astro'
 import Link from '@/components/Link.astro'
 import PageHead from '@/components/PageHead.astro'
-import { buttonVariants } from '@/components/ui/button'
-import { SITE } from '@/consts'
+import { Icon } from 'astro-icon/components'
 import Layout from '@/layouts/Layout.astro'
 import { getRecentPosts } from '@/lib/data-utils'
+import { cn } from '@/lib/utils'
 
-const blog = await getRecentPosts(SITE.featuredPostCount)
+const recentPosts = await getRecentPosts(8)
+const featuredPost = recentPosts[0]
+const otherPosts = recentPosts.slice(1, 7)
+
+// Mock data for now - replace with real content
+const experiments = [
+  { title: 'Color perception in CIELAB space', href: '#', type: 'research' },
+  { title: 'WebGL particle systems', href: '#', type: 'code' },
+  { title: 'Information density experiments', href: '#', type: 'design' },
+]
 ---
 
-<Layout class="max-w-3xl">
-  <PageHead slot="head" title="Home" />
-  <section>
-    <div class="rounded-lg border">
-      <div class="flex flex-col space-y-1.5 p-6">
-        <h3 class="text-3xl leading-none font-medium">er·u·dite</h3>
-        <p class="text-muted-foreground text-sm">
-          /ˈer(y)əˌdīt/ &bull; <span class="font-medium">adjective</span>
-        </p>
+<Layout class="max-w-7xl">
+  <PageHead slot="head" title="Ryan Barnett" />
+  
+  <!-- Hero -->
+  <header class="mb-20 pt-8">
+    <h1 class="text-6xl font-light tracking-tight mb-6">
+      Ryan Barnett
+    </h1>
+    <p class="text-xl text-foreground/70 max-w-3xl leading-relaxed">
+      Senior engineer turned engineering leader. Previously at The Washington Post, 
+      where I helped build systems that served millions of readers daily. 
+      Currently exploring tools for thought and information architecture.
+    </p>
+  </header>
+
+  <!-- Main Grid -->
+  <div class="grid grid-cols-12 gap-x-8 gap-y-16">
+    
+    <!-- Featured Story -->
+    {featuredPost && (
+      <article class="col-span-12 lg:col-span-8 group">
+        <Link href={`/blog/${featuredPost.id}`} class="block">
+          <div class="space-y-4">
+            <div class="overflow-hidden bg-muted aspect-[16/9] lg:aspect-[2/1]">
+              {featuredPost.data.image ? (
+                <img 
+                  src={featuredPost.data.image.src} 
+                  alt={featuredPost.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              ) : (
+                <div class="w-full h-full bg-gradient-to-br from-muted to-muted-foreground/10" />
+              )}
+            </div>
+            <div class="space-y-3">
+              <h2 class="text-3xl font-normal leading-tight group-hover:text-primary transition-colors">
+                {featuredPost.data.title}
+              </h2>
+              {featuredPost.data.description && (
+                <p class="text-lg text-muted-foreground line-clamp-2">
+                  {featuredPost.data.description}
+                </p>
+              )}
+              <p class="text-sm text-muted-foreground">
+                {new Date(featuredPost.data.date).toLocaleDateString('en-US', { 
+                  month: 'long', 
+                  day: 'numeric',
+                  year: 'numeric'
+                })}
+              </p>
+            </div>
+          </div>
+        </Link>
+      </article>
+    )}
+
+    <!-- Sidebar -->
+    <aside class="col-span-12 lg:col-span-4 space-y-12">
+      <!-- Now -->
+      <section>
+        <h3 class="text-xs uppercase tracking-wider text-muted-foreground mb-4">Now</h3>
+        <div class="prose prose-sm dark:prose-invert">
+          <p class="text-foreground/80">
+            Building in public. Writing about web performance, 
+            architecture patterns, and the craft of engineering leadership.
+          </p>
+        </div>
+      </section>
+
+      <!-- Quick Links -->
+      <section>
+        <h3 class="text-xs uppercase tracking-wider text-muted-foreground mb-4">Connect</h3>
+        <div class="flex gap-4">
+          <Link 
+            href="https://github.com/rmbrntt" 
+            external
+            class="text-foreground/60 hover:text-foreground transition-colors"
+            aria-label="GitHub"
+          >
+            <Icon name="lucide:github" class="w-5 h-5" />
+          </Link>
+          <Link 
+            href="#" 
+            external
+            class="text-foreground/60 hover:text-foreground transition-colors"
+            aria-label="LinkedIn"
+          >
+            <Icon name="lucide:linkedin" class="w-5 h-5" />
+          </Link>
+          <Link 
+            href="/rss.xml"
+            class="text-foreground/60 hover:text-foreground transition-colors"
+            aria-label="RSS Feed"
+          >
+            <Icon name="lucide:rss" class="w-5 h-5" />
+          </Link>
+        </div>
+      </section>
+    </aside>
+
+    <!-- Recent Posts Grid -->
+    {otherPosts.length > 0 && (
+      <section class="col-span-12">
+        <h2 class="text-xs uppercase tracking-wider text-muted-foreground mb-6">Recent Writing</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {otherPosts.map((post, index) => (
+            <article class={cn(
+              "group",
+              index === 0 && "md:col-span-2 lg:col-span-1",
+              index === 3 && "lg:col-span-2"
+            )}>
+              <Link href={`/blog/${post.id}`} class="block space-y-3">
+                {(index === 0 || index === 3) && post.data.image && (
+                  <div class="overflow-hidden bg-muted aspect-[16/9]">
+                    <img 
+                      src={post.data.image.src} 
+                      alt={post.data.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+                <div>
+                  <h3 class={cn(
+                    "font-normal leading-snug group-hover:text-primary transition-colors",
+                    (index === 0 || index === 3) ? "text-xl" : "text-lg"
+                  )}>
+                    {post.data.title}
+                  </h3>
+                  <p class="text-sm text-muted-foreground mt-2">
+                    {new Date(post.data.date).toLocaleDateString('en-US', { 
+                      month: 'short', 
+                      day: 'numeric' 
+                    })}
+                  </p>
+                </div>
+              </Link>
+            </article>
+          ))}
+        </div>
+        <div class="mt-8 text-center">
+          <Link 
+            href="/blog" 
+            class="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-2"
+          >
+            View all posts 
+            <Icon name="lucide:arrow-right" class="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+    )}
+
+    <!-- Experiments -->
+    <section class="col-span-12 lg:col-span-8">
+      <h2 class="text-xs uppercase tracking-wider text-muted-foreground mb-6">Experiments & Ideas</h2>
+      <div class="space-y-1">
+        {experiments.map(exp => (
+          <Link 
+            href={exp.href} 
+            class="group flex items-center justify-between py-4 border-b border-border/50 hover:border-foreground/20 transition-colors"
+          >
+            <div class="flex items-center gap-4">
+              <span class="text-lg group-hover:text-primary transition-colors">
+                {exp.title}
+              </span>
+              <span class="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">
+                {exp.type}
+              </span>
+            </div>
+            <Icon 
+              name="lucide:arrow-up-right" 
+              class="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" 
+            />
+          </Link>
+        ))}
       </div>
-      <div class="p-6 pt-0">
-        <p class="text-muted-foreground mb-2 text-sm">
-          astro-erudite is an opinionated, unstyled static blogging template
-          built with <Link
-            href="https://astro.build"
-            class="text-foreground"
-            external
-            underline>Astro</Link
-          >, <Link
-            href="https://tailwindcss.com"
-            class="text-foreground"
-            external
-            underline>Tailwind</Link
-          >, and <Link
-            href="https://ui.shadcn.com"
-            class="text-foreground"
-            external
-            underline>shadcn/ui</Link
-          >. Extraordinarily loosely based on the <Link
-            href="https://astro-micro.vercel.app/"
-            class="text-foreground"
-            external
-            underline>Astro Micro</Link
-          > theme.
-        </p>
-        <p class="text-muted-foreground text-sm">
-          To use this template, check out the <Link
-            href="https://github.com/jktrn/astro-erudite"
-            class="text-foreground"
-            underline
-            external>GitHub</Link
-          > repository. To learn more about why this template exists, read this blog
-          post: <Link
-            href="/blog/the-state-of-static-blogs"
-            class="text-foreground"
-            underline>The State of Static Blogs in 2024</Link
-          >.
-        </p>
-      </div>
-    </div>
-  </section>
-  <section class="flex flex-col gap-y-4">
-    <h2 class="text-2xl font-medium">Latest posts</h2>
-    <ul class="flex flex-col gap-y-4">
-      {
-        blog.map((post) => (
+    </section>
+
+    <!-- Reading List -->
+    <section class="col-span-12 lg:col-span-4">
+      <h2 class="text-xs uppercase tracking-wider text-muted-foreground mb-6">Reading & Inspiration</h2>
+      <ul class="space-y-3">
+        {[
+          { text: 'Tools for Thought', author: 'Howard Rheingold', href: '#' },
+          { text: 'The Garden and the Stream', author: 'Mike Caulfield', href: '#' },
+          { text: 'How to Make Sense of Any Mess', author: 'Abby Covert', href: '#' },
+        ].map(item => (
           <li>
-            <BlogCard entry={post} />
+            <Link 
+              href={item.href} 
+              class="group flex flex-col"
+            >
+              <span class="text-foreground/80 group-hover:text-primary transition-colors">
+                {item.text}
+              </span>
+              <span class="text-xs text-muted-foreground">
+                {item.author}
+              </span>
+            </Link>
           </li>
-        ))
-      }
-    </ul>
-    <div class="flex justify-center">
-      <Link
-        href="/blog"
-        class={buttonVariants({ variant: 'ghost' }) + ' group'}
-      >
-        See all posts <span
-          class="ml-1.5 transition-transform group-hover:translate-x-1"
-          >&rarr;</span
-        >
-      </Link>
-    </div>
-  </section>
+        ))}
+      </ul>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-24 pt-12 border-t border-border/50">
+    <p class="text-xs text-muted-foreground">
+      This site grows through continuous iteration. Rough edges are features, not bugs.
+    </p>
+  </footer>
 </Layout>
