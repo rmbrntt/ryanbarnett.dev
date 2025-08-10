@@ -17,11 +17,11 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Install, build, and upload your site
-        uses: withastro/action@v3
+        uses: withastro/action@v4
         with:
           path: ./site # The root location of your Astro project inside the repository
-          node-version: 20 # The specific version of Node that should be used to build your site
-          package-manager: pnpm@latest # Use pnpm as the package manager
+          node-version: 22 # The specific version of Node that should be used to build your site
+          package-manager: npm@latest # Use npm as the package manager to avoid strict dependency issues
 
   deploy:
     needs: build
