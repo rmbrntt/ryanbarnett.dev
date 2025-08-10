@@ -87,15 +87,15 @@
   --destructive: oklch(0.576 0.152 24.65); /* red-600 */
   --destructive-foreground: oklch(0.997 0.005 69.86); /* paper */
   --border: oklch(0.873 0.019 69.86); /* base-200 */
-  --ring: oklch(0.782 0.027 69.86); /* base-300 */ --sidebar:
-    hsl(0 0% 98%); --sidebar-foreground:
-    hsl(240 5.3% 26.1%); --sidebar-primary:
-    hsl(240 5.9% 10%); --sidebar-primary-foreground:
-    hsl(0 0% 98%); --sidebar-accent:
-    hsl(240 4.8% 95.9%); --sidebar-accent-foreground:
-    hsl(240 5.9% 10%); --sidebar-border:
-    hsl(220 13% 91%); --sidebar-ring:
-    hsl(217.2 91.2% 59.8%);
+  --ring: oklch(0.782 0.027 69.86); /* base-300 */ 
+  --sidebar:hsl(0 0% 98%); 
+  --sidebar-foreground:hsl(240 5.3% 26.1%); 
+  --sidebar-primary:hsl(240 5.9% 10%);
+  --sidebar-primary-foreground:hsl(0 0% 98%);
+  --sidebar-accent:hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground:hsl(240 5.9% 10%); 
+  --sidebar-border:hsl(220 13% 91%);
+  --sidebar-ring:hsl(217.2 91.2% 59.8%);
 }
 
 [data-theme='dark'] {

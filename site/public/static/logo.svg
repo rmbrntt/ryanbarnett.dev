@@ -1,16 +1,37 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_271_118)">
-<rect width="512" height="74" fill="#CCCCCC"/>
-<rect y="146" width="512" height="74" fill="#CCCCCC"/>
-<rect y="292" width="512" height="74" fill="#CCCCCC"/>
-<rect y="438" width="512" height="74" fill="#CCCCCC"/>
-<rect y="74" width="72" height="72" fill="#CCCCCC"/>
-<rect y="366" width="72" height="72" fill="#CCCCCC"/>
-<rect x="440" y="220" width="72" height="72" fill="#CCCCCC"/>
-</g>
-<defs>
-<clipPath id="clip0_271_118">
-<rect width="512" height="512" fill="white"/>
-</clipPath>
-</defs>
+  <!-- Offset circles creating tension with stepped contrast -->
+  
+  <style>
+    /* Light mode colors */
+    :root {
+      --logo-large: #B7B5AC; /* base-300 */
+      --logo-medium: #FFFCF0; /* paper (background) */
+      --logo-small: #6F6E69; /* base-600 */
+    }
+    
+    /* Dark mode colors */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --logo-large: #403E3C; /* base-800 */
+        --logo-medium: #100F0F; /* black (background) */
+        --logo-small: #878580; /* base-500 */
+      }
+    }
+    
+    /* Support for data-theme attribute */
+    [data-theme="dark"] svg {
+      --logo-large: #403E3C; /* base-800 */
+      --logo-medium: #100F0F; /* black (background) */
+      --logo-small: #878580; /* base-500 */
+    }
+  </style>
+  
+  <!-- Large circle -->
+  <circle cx="220" cy="220" r="180" fill="var(--logo-large)"/>
+  
+  <!-- Medium circle cutting into the large one -->
+  <circle cx="340" cy="340" r="120" fill="var(--logo-medium)"/>
+  
+  <!-- Small accent circle -->
+  <circle cx="340" cy="340" r="80" fill="var(--logo-small)"/>
 </svg>
